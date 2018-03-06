@@ -1,0 +1,386 @@
+{
+  "contractName": "Buyer",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "getDb",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "kill",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "productDb",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "productDbv2",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owneraddress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_proRegistry",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.4;\nimport \"./Base.sol\";\nimport \"./ProductRegistry.sol\";\n\ncontract Buyer is Base {\n\n  ProductRegistry public  productDb;\n\n\n  function Buyer(address _proRegistry) {\n  \n    productDb=ProductRegistry(_proRegistry);\n\n  }\n\n}\n",
+  "sourcePath": "/Users/fatih/Desktop/ethExchange/contracts/Buyer.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/fatih/Desktop/ethExchange/contracts/Buyer.sol",
+      "exportedSymbols": {
+        "Buyer": [
+          89
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".4"
+          ]
+        },
+        "id": 70,
+        "name": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 69,
+          "absolutePath": "/Users/fatih/Desktop/ethExchange/contracts/Base.sol",
+          "file": "./Base.sol",
+          "scope": 90,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 71,
+        "name": "ImportDirective",
+        "src": "24:20:1"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 408,
+          "absolutePath": "/Users/fatih/Desktop/ethExchange/contracts/ProductRegistry.sol",
+          "file": "./ProductRegistry.sol",
+          "scope": 90,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 72,
+        "name": "ImportDirective",
+        "src": "45:31:1"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            68
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            89,
+            68
+          ],
+          "name": "Buyer",
+          "scope": 90
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": [
+                null
+              ]
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Base",
+                  "referencedDeclaration": 68,
+                  "type": "contract Base"
+                },
+                "id": 73,
+                "name": "UserDefinedTypeName",
+                "src": "96:4:1"
+              }
+            ],
+            "id": 74,
+            "name": "InheritanceSpecifier",
+            "src": "96:4:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "productDb",
+              "scope": 89,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract ProductRegistry",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "ProductRegistry",
+                  "referencedDeclaration": 407,
+                  "type": "contract ProductRegistry"
+                },
+                "id": 75,
+                "name": "UserDefinedTypeName",
+                "src": "106:15:1"
+              }
+            ],
+            "id": 76,
+            "name": "VariableDeclaration",
+            "src": "106:33:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": true,
+              "modifiers": [
+                null
+              ],
+              "name": "Buyer",
+              "payable": false,
+              "scope": 89,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proRegistry",
+                      "scope": 88,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 77,
+                        "name": "ElementaryTypeName",
+                        "src": "160:7:1"
+                      }
+                    ],
+                    "id": 78,
+                    "name": "VariableDeclaration",
+                    "src": "160:20:1"
+                  }
+                ],
+                "id": 79,
+                "name": "ParameterList",
+                "src": "159:22:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 80,
+                "name": "ParameterList",
+                "src": "182:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract ProductRegistry"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 76,
+                              "type": "contract ProductRegistry",
+                              "value": "productDb"
+                            },
+                            "id": 81,
+                            "name": "Identifier",
+                            "src": "191:9:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "contract ProductRegistry",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 407,
+                                  "type": "type(contract ProductRegistry)",
+                                  "value": "ProductRegistry"
+                                },
+                                "id": 82,
+                                "name": "Identifier",
+                                "src": "201:15:1"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 78,
+                                  "type": "address",
+                                  "value": "_proRegistry"
+                                },
+                                "id": 83,
+                                "name": "Identifier",
+                                "src": "217:12:1"
+                              }
+                            ],
+                            "id": 84,
+                            "name": "FunctionCall",
+                            "src": "201:29:1"
+                          }
+                        ],
+                        "id": 85,
+                        "name": "Assignment",
+                        "src": "191:39:1"
+                      }
+                    ],
+                    "id": 86,
+                    "name": "ExpressionStatement",
+                    "src": "191:39:1"
+                  }
+                ],
+                "id": 87,
+                "name": "Block",
+                "src": "182:54:1"
+              }
+            ],
+            "id": 88,
+            "name": "FunctionDefinition",
+            "src": "145:91:1"
+          }
+        ],
+        "id": 89,
+        "name": "ContractDefinition",
+        "src": "78:161:1"
+      }
+    ],
+    "id": 90,
+    "name": "SourceUnit",
+    "src": "0:240:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-03-06T16:51:13.782Z"
+}
