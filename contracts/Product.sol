@@ -10,25 +10,44 @@ contract Product {
        uint minPrice;
        address lock;
        uint lockTime;
-       address[] viewers;                   //adress of viewers for pay back
+       mapping (address => uint) viewers;
+       address[] viewerlist;                   //adress of viewers for pay back
        uint viewCount;
        uint64 createdOn;                   // Time when product was created
 
    }
+   enum  State { Initial,Available, Locked, Selled }
 
-   Product public product;
+   State public cState;
 
+   Product private product;
+   address private Buyer;
+   address private Seller;
 
    modifier timeIsUp() {
 
        if (product.lockTime >= block.timestamp) {
            product.lock = address(0);
+           cState=State.Available;
        }
        _;
    }
 
-   modifier checkLock(){
-       if (product.lock != msg.sender) {
+   modifier onlyBuyerOrOwner(){
+     //this is not correct fix this
+     if (msg.sender == Buyer || msg.sender== product.owner)
+     {
+          _;
+
+     }else{
+        revert();
+     }
+
+
+   }
+
+   modifier checkLock(address msgSender){
+       if (product.lock != msgSender) {
           revert();
        }
        _;
@@ -47,13 +66,13 @@ contract Product {
        return true;
    }
 
-   function checkBuyable(address msgsender)
+   function checkBuyable(address msgsender,uint value)
    public
    timeIsUp
    returns (bool)
    {
-       require(product.lock == msgsender);
-       if (product.lock != address(0) ) {
+       //require(product.lock == msgsender && product.price == value);
+       if (product.lock != msgsender || product.lock == address(0) ||  product.price != value ) {
           return false;
        }
        return true;
@@ -66,11 +85,10 @@ contract Product {
         uint _minPrice,
         uint _price
     )
-        public
+        external
     {
+        //add modifier this function restrict only callable from merchants contracts
 
-        //add modifier this function restrict only callaable from merchants contracts
-        
         require(product.createdOn == 0);               // Prevent constructing multiple times
         product.name = _name;
         product.owner=msg.sender;
@@ -78,27 +96,63 @@ contract Product {
         product.minPrice = _minPrice;
         product.createdOn = uint64(now);
         product.price = _price;
-
-
+        cState=State.Available;
     }
 
 
    function lockProduct(address viewer)
    public
+   timeIsUp()
    checkLocked()
    {
-
         //add modifier this function restrict only callaable from merchants contracts
 
        require(checkLockable());
+       require(product.price >= product.minPrice);
        product.lock=viewer;
        product.viewCount+=1;
        product.price-=1;//change this :)
-       product.viewers.push(viewer);//maybe mapping
+       product.viewerlist.push(viewer);//maybe mapping
+       product.viewers[viewer]+=1000 ;//in wei
        product.lockTime=now+60;//now is block.timestamp
+       cState=State.Locked;
 
 
    }
+
+   function generalInfo() public
+   view
+   returns(address,string,uint,uint64) //owner,name
+   {
+     return (product.owner,product.name,product.viewCount,product.createdOn);
+   }
+
+
+   function pricelInfo(address locker)
+   public
+   timeIsUp
+   checkLock(locker)
+   returns(uint,string) //owner,name
+   {
+     return (product.price,product.name);
+   }
+
+   function getOwner()public
+   view
+   returns(address) //owner,name
+   {
+     return (product.owner);
+   }
+
+
+   function destroyProduct()external
+
+    //add modifier only seller contract can call this,name
+    onlyBuyerOrOwner()
+   {
+     selfdestruct(product.owner);
+   }
+
 
 
  function getBalance() view public returns (uint) {

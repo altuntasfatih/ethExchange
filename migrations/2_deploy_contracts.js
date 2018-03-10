@@ -18,8 +18,44 @@ module.exports = function(deployer) {
   };
 */
 
-  deployer.deploy(Product);
 
+
+
+
+  deployer.deploy(Product);
+  deployer.link(Product,ProductRegistry);
+//  deployer.deploy(ProductRegistry);
+
+  deployer.deploy(ProductRegistry).then(function() {
+      deployer.deploy(Buyer, ProductRegistry.address);
+      deployer.deploy(Seller,ProductRegistry.address);
+  }).then(function() {});
+
+
+
+/*
+  deployer.link(Base, Seller);
+  deployer.link(ProductRegistry, Seller);
+  deployer.deploy(Seller,ProductRegistry.address);
+  */
+
+  /*
+      return deployer.deploy(Seller, ProductRegistry.address);
+   }).then(function(){})
+
+*/
+
+/*
+  deployer.deploy(Base,ProductRegistry.address);
+  //deployer.link(Base, ProductRegistry);
+  deployer.link(Base, Buyer);
+  deployer.link(Base, Seller);
+
+  deployer.deploy(Buyer,ProductRegistry.address);
+  deployer.deploy(Seller,ProductRegistry.address);
+  deployer.link(ProductRegistry, Buyer);
+  deployer.link(ProductRegistry, Seller);
+  */
 
 
 

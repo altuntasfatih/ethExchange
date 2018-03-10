@@ -4,13 +4,13 @@ import "./ProductRegistry.sol";
 
 contract Seller is Base {
 
-  ProductRegistry public  productDb;
 
+
+  event LogProductDeleted(address indexed owner, address indexed product);
 
   function Seller(address _proRegistry) {
 
     productDb=ProductRegistry(_proRegistry);
-
   }
 
   modifier checkParameter(uint _minPrice,uint _price){
@@ -25,7 +25,7 @@ contract Seller is Base {
   function publishProduct(string _name,
   uint _minPrice,
   uint _price)
-    public
+    external
     payable
     checkParameter(_price,_minPrice)
     returns (address)
@@ -33,12 +33,28 @@ contract Seller is Base {
         if (msg.value != 1* 10**17 ){//assume 0.1 ether
             revert();
         }
-        return productDb.addProduct(_name,msg.sender,_minPrice,_price);
+        var result=productDb.addProduct(_name,msg.sender,_minPrice,_price);
+        assert(result==address(0));
+        return result;
+
     }
 
     function getDb() public onlyOwner returns  (address){
       return productDb;
     }
+
+
+    function recallProduct(address _product)
+    external
+    {
+      require(Product(_product).getOwner()==msg.sender);
+      Product(_product).destroyProduct();
+      LogProductDeleted(msg.sender,_product);
+
+    }
+
+
+
 
 
 }

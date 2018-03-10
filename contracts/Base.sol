@@ -3,7 +3,7 @@ import "./ProductRegistry.sol";
 
 contract Base{
     address owner;
-    ProductRegistry public  productDbv2;
+    ProductRegistry public  productDb;
 
 
     modifier onlyOwner(){
@@ -14,11 +14,11 @@ contract Base{
         }
     }
 
-    function Base  (address _proRegistry) public{
+    function Base  () public{
           owner= msg.sender;
 
 
-          productDbv2=ProductRegistry(_proRegistry);
+
           /*
               productDbv2=ProductRegistry(_proRegistry);
           if (productDb==address(0)){
@@ -28,7 +28,7 @@ contract Base{
     }
 
     function getDb() public onlyOwner returns  (address){
-      return address(productDbv2);
+      return address(productDb);
     }
 
 

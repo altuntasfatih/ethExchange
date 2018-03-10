@@ -4,7 +4,8 @@ contract ProductRegistry {
 
 
 
-  event anProductAdded(address indexed owner, address indexed product, string indexed name);
+  event LogProductAdded(address indexed owner, address indexed product, string  name);
+  event LogProductDeleted(address indexed owner, address indexed product, string  name);
 
 
   mapping (address => address[]) public OwnerToProducts;
@@ -29,16 +30,21 @@ contract ProductRegistry {
       _product.construct(_name,_owner,_minPrice,_price);
       Products[_product]= true;
       OwnerToProducts[_owner].push(_product);
-
-      anProductAdded(_owner,_product,_name);
       productSize++;
+      LogProductAdded(_owner,_product,_name);
+
       return address(_product);
 
   }
 
 
-  function removeProduct(){
-
+  function removeProduct(address _product)
+  external
+  {
+     if(Product(_product).getOwner()==address(0))
+     {
+       delete Products[_product];
+     }
   }
 
 }
