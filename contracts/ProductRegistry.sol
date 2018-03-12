@@ -14,7 +14,7 @@ contract ProductRegistry {
 
 
 
-  function ProductRegistry() {
+  function  ProductRegistry() public {
     // constructor
   }
 

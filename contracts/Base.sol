@@ -18,19 +18,19 @@ contract Base{
           owner= msg.sender;
 
 
-
-          /*
-              productDbv2=ProductRegistry(_proRegistry);
-          if (productDb==address(0)){
-          productDb=new ProductRegistry(_proRegistry);
-        }
-        */
     }
 
-    function getDb() public onlyOwner returns  (address){
+    function getDb() public view onlyOwner returns  (address){
       return address(productDb);
     }
 
+    function transferOwner(uint64 _value)
+    public
+    onlyOwner
+    returns (bool){
+        bool sent = owner.send(_value);
+        return sent;
+    }
 
     function kill() public onlyOwner{
 

@@ -10,7 +10,7 @@ contract Buyer is Base {
     productDb=ProductRegistry(_proRegistry);
   }
 
-  mapping (address => uint) payBack;
+  mapping (address => uint) private  payBack ;
 
   modifier checkLockable( address _product ) {
       if (msg.value != 10000000000  &&  !Product(_product).checkLockable() ) { //0.1 ether
@@ -44,12 +44,13 @@ contract Buyer is Base {
   checkBuyable(_product)
   returns(bool){
     Product _temp=Product(_product);
+    _temp.destroyProduct();
+    //change state product is selled then
         bool sent = _temp.getOwner().send(msg.value);
         if (!sent){
             revert();
         }
         else{
-          _temp.destroyProduct();
           return true;
         }
   }

@@ -21,8 +21,10 @@ contract Product {
    State public cState;
 
    Product private product;
-   address private Buyer;
-   address private Seller;
+   //Buyer public constant ens = Buyer(0x314159265dD8dbb310642f98f50C066173C1259b);
+
+   address public Buyer;
+   address public Seller;
 
    modifier timeIsUp() {
 
@@ -59,20 +61,20 @@ contract Product {
        _;
    }
 
-   function checkLockable() public returns (bool){
+   function checkLockable() public view returns (bool){
        if (product.lock != address(0) ) {
           return false;
        }
        return true;
    }
 
-   function checkBuyable(address msgsender,uint value)
+   function checkBuyable(address _msgSender,uint _value)
    public
    timeIsUp
    returns (bool)
    {
        //require(product.lock == msgsender && product.price == value);
-       if (product.lock != msgsender || product.lock == address(0) ||  product.price != value ) {
+       if (product.lock != _msgSender || product.lock == address(0) ||  product.price != _value || cState != State.Locked ) {
           return false;
        }
        return true;
