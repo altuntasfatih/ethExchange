@@ -7,7 +7,6 @@ var Product=artifacts.require("./Product.sol");
 var ProductRegistry=artifacts.require("./ProductRegistry.sol");
 
 
-
 module.exports = function(deployer) {
 
   deployer.deploy(ProductRegistry).then(function() {

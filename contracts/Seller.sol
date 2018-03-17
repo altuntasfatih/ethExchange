@@ -7,6 +7,7 @@ contract Seller is Base {
 
 
   event LogProductDeleted(address indexed owner, address indexed product);
+  event LogProductPublished(address indexed owner, address indexed product);
 
   function Seller(address _proRegistry) {
 
@@ -14,7 +15,7 @@ contract Seller is Base {
   }
 
   modifier checkParameter(uint _minPrice,uint _price){
-      if (_minPrice < _price) //+ (_price*0.1) )
+      if (_minPrice > _price) //+ (_price*0.1) )
       {
          revert();
       }
@@ -27,7 +28,7 @@ contract Seller is Base {
   uint _price)
     external
     payable
-    checkParameter(_price,_minPrice)
+    checkParameter(_minPrice,_price)
     returns (address)
     {
         if (msg.value != 1* 10**17 ){//assume 0.1 ether
@@ -35,13 +36,12 @@ contract Seller is Base {
         }
         var result=productDb.addProduct(_name,msg.sender,_minPrice,_price);
         assert(result==address(0));
+        LogProductPublished(msg.sender,result);
         return result;
 
     }
 
-    function getDb() public onlyOwner returns  (address){
-      return productDb;
-    }
+
 
 
     function recallProduct(address _product)

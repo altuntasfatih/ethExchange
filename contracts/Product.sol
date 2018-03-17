@@ -2,7 +2,6 @@ pragma solidity ^0.4.4;
 
 contract Product {
 
-
    struct Product{
        address owner;
        uint price;
