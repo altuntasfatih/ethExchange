@@ -1,4 +1,5 @@
 var buyer  = artifacts.require("./Buyer.sol");
+var product  = artifacts.require("./Product.sol");
 var seller = artifacts.require("./Seller.sol");
 var proRegistry=artifacts.require("./ProductRegistry.sol");
 
@@ -25,20 +26,26 @@ contract("Product Publish",function(accounts){
         contractInstance=instance;
       return contractInstance.publishProduct(product[0],product[1],product[2],{value:web3.toWei(0.1,'ether'),from:accounts[0]});
       }).then(function(tx){
-        console.log(web3.eth.getBalance(contractInstance.address));
+        //console.log(web3.eth.getBalance(contractInstance.address));
       })
     });
 
   });
 
-
-
-    it('List events of product:',function(){
-      proRegistry.deployed().then(function(instance){
-        instance.allEvents({fromBlock: 0, toBlock: 'latest'}, function(error, result) {
-          console.log(result.args);
-          productAddress.push(result.product);
-        })
-    });
 });
+
+contract("Event of Product",function(accounts){
+
+  it('List events of product:',function(){
+    proRegistry.deployed().then(function(instance){
+      instance.allEvents({fromBlock: 0, toBlock: 'latest'}, function(error, result) {
+        console.log("Adress of product : ",result.args.product);
+        productAddress.push(result.args.product);
+
+
+      });
+
+  });
+});
+
 });

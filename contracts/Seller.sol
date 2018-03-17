@@ -35,8 +35,7 @@ contract Seller is Base {
             revert();
         }
         var result=productDb.addProduct(_name,msg.sender,_minPrice,_price);
-        //assert(result==address(0));
-        //LogProductPublished(msg.sender,result);
+        LogProductPublished(msg.sender,result);
         return result;
 
     }
