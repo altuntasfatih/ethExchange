@@ -1,0 +1,25 @@
+{
+  "name": "ethexchange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altuntasfatih/ethExchange.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/altuntasfatih/ethExchange/issues"
+  },
+  "homepage": "https://github.com/altuntasfatih/ethExchange#readme",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  }
+}

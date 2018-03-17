@@ -1,5 +1,5 @@
 var buyer  = artifacts.require("./Buyer.sol");
-var product  = artifacts.require("./Product.sol");
+var Product  = artifacts.require("./Product.sol");
 var seller = artifacts.require("./Seller.sol");
 var proRegistry=artifacts.require("./ProductRegistry.sol");
 
@@ -41,6 +41,7 @@ contract("Event of Product",function(accounts){
       instance.allEvents({fromBlock: 0, toBlock: 'latest'}, function(error, result) {
         console.log("Adress of product : ",result.args.product);
         productAddress.push(result.args.product);
+        Product item = Product(result.args.product);
 
 
       });
