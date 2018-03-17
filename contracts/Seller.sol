@@ -21,8 +21,7 @@ contract Seller is Base {
       }
       _;
   }
-
-
+  
   function publishProduct(string _name,
   uint _minPrice,
   uint _price)
@@ -39,7 +38,6 @@ contract Seller is Base {
         return result;
 
     }
-
 
     function recallProduct(address _product)
     external
