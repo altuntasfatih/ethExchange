@@ -1,7 +1,7 @@
-/// Export configuration options
+
 module.exports = {
     "files" : "./app/**/*.{js, html, css}",
     "server" : { "baseDir" : "./app" },
-    "https" : true,
+    "https" : false,
     "browser" : ["google-chrome", "firefox"]
 }
