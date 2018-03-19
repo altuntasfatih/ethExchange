@@ -41,8 +41,6 @@ contract("Event of Product",function(accounts){
       instance.allEvents({fromBlock: 0, toBlock: 'latest'}, function(error, result) {
         console.log("Adress of product : ",result.args.product);
         productAddress.push(result.args.product);
-        Product item = Product(result.args.product);
-
 
       });
 

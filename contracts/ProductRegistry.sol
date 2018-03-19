@@ -1,24 +1,19 @@
 pragma solidity ^0.4.4;
 import "./Product.sol";
 contract ProductRegistry {
+    event LogProductAdded(address indexed owner, address indexed product, string  name);
+    event LogProductDeleted(address indexed owner, address indexed product, string  name);
 
 
+    mapping (address => address[]) public OwnerToProducts;
+    mapping (address => bool) public Products; //product is publish or not
+    uint public productSize;
 
-  event LogProductAdded(address indexed owner, address indexed product, string  name);
-  event LogProductDeleted(address indexed owner, address indexed product, string  name);
-
-
-  mapping (address => address[]) public OwnerToProducts;
-  mapping (address => bool) public Products; //product is publish or not
-  uint public productSize;
-
-
-
-  function  ProductRegistry()  public {
+    function  ProductRegistry()  public {
     // constructor
-  }
+    }
 
-  function addProduct(
+    function addProduct(
     string _name,
     address _owner,
     uint _minPrice,
@@ -36,15 +31,17 @@ contract ProductRegistry {
       return address(_product);
 
   }
-
-
-  function removeProduct(address _product)
-  external
-  {
-     if(Product(_product).getOwner()==address(0))
-     {
-       delete Products[_product];
-     }
+  function getSize() public view returns(uint){
+  return productSize;
   }
+
+    function removeProduct(address _product)
+    external
+    {
+         if(Product(_product).getOwner()==address(0))
+         {
+          delete Products[_product];
+         }
+    }
 
 }
