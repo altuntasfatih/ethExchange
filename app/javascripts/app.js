@@ -12,9 +12,9 @@ import seller from '../../build/contracts/Seller.json'
 import product from '../../build/contracts/product.json'
 
 
-var proRegistry = contract(product_registry)
-
-var accounts;
+var  addrBuyer="0x4e4e880edf3be969b7e687d8dab4daf363c35fbe"
+var  addrSeller="0x7a24eec476fb37763b6bdef725c3c8baa8d6410e"
+var  addrPRegistry="0x427f2ccd0070659e3b58e9c90f98fb6f36ced6e3";
 var account;
 
 window.App = {
@@ -26,39 +26,27 @@ window.App = {
         alert("There was an error fetching your accounts.");
         return;
       }
-
       if (accs.length == 0) {
         alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
         return;
       }
 
-      accounts = accs;
-      account = accounts[0];
-
+      window.App.account=accs[0];
+      account=accs[0];
       self.refreshBalance();
     });
+
+    window.App.seller=web3.eth.contract(seller.abi).at(addrSeller);
+    window.App.buyer=web3.eth.contract(buyer.abi).at(addrBuyer);
+    window.App.proRegistry=web3.eth.contract(product_registry.abi).at(addrPRegistry);
   },
 
   refreshBalance: function() {
     var balance = document.getElementById("balance");
-    console.log("Haydar")
-    console.log(product_registry)
-    console.log(account)
     web3.eth.getBalance(account,function(err,result){
-      console.log(result);
       balance.innerHTML = result;
     });
-
   },
-  getContract:function(){
-    console.log(web3.currentProvider);
-    return proRegistry.at("0x839634a2d40b3d248f62754ec8326eb081bba4bc");
-  },
-  getSize:function(){
-    console.log(web3.currentProvider);
-    proRegistry.at("0x839634a2d40b3d248f62754ec8326eb081bba4bc");
-    product_registry.productSize;
-  }
   
 };
 

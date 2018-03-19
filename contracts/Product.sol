@@ -1,38 +1,40 @@
 pragma solidity ^0.4.4;
 
+
 contract Product {
 
-   struct Product{
-       address owner;
-       uint price;
-       string name;
-       uint minPrice;
-       address lock;
-       uint lockTime;
-       mapping (address => uint) viewers;
-       address[] viewerlist;                   //adress of viewers for pay back
-       uint viewCount;
-       uint64 createdOn;                   // Time when product was created
+    struct Product {
+        address owner;
+        uint price;
+        string name;
+        uint minPrice;
+        address lock;
+        uint lockTime;
+        mapping (address => uint) viewers;
+        address[] viewerlist;                   //adress of viewers for pay back
+        uint viewCount;
+        uint64 createdOn;                   // Time when product was created
 
-   }
-   enum  State { Initial,Available, Locked, Selled }
+    }
 
-   State public cState;
+    enum  State { Initial, Available, Locked, Selled }
 
-   Product private product;
+    State public cState;
+
+    Product private product;
    //Buyer public constant ens = Buyer(0x314159265dD8dbb310642f98f50C066173C1259b);
 
-   address public Buyer;
-   address public Seller;
+    address public Buyer;
+    address public Seller;
 
-   modifier timeIsUp() {
+    modifier timeIsUp() {
 
-       if (product.lockTime >= block.timestamp) {
-           product.lock = address(0);
-           cState=State.Available;
-       }
-       _;
-   }
+        if (product.lockTime >= block.timestamp) {
+            product.lock = address(0);
+            cState=State.Available;
+        }
+        _;
+    }
 
    modifier onlyBuyerOrOwner(){
      //this is not correct fix this
@@ -146,19 +148,17 @@ contract Product {
    }
 
 
-   function destroyProduct()external
-
+    function destroyProduct()external
     //add modifier only seller contract can call this,name
     onlyBuyerOrOwner()
-   {
-     selfdestruct(product.owner);
-   }
+    {
+      selfdestruct(product.owner);
+    }
 
 
-
- function getBalance() view public returns (uint) {
-       return address(this).balance ;
-   }
+    function getBalance() view public returns ( uint) {
+        return address(this).balance ;
+    }
 
 
 }

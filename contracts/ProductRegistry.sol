@@ -1,5 +1,6 @@
 pragma solidity ^0.4.4;
 import "./Product.sol";
+
 contract ProductRegistry {
     event LogProductAdded(address indexed owner, address indexed product, string  name);
     event LogProductDeleted(address indexed owner, address indexed product, string  name);
@@ -27,13 +28,14 @@ contract ProductRegistry {
       OwnerToProducts[_owner].push(_product);
       productSize++;
       LogProductAdded(_owner,_product,_name);
-
+      
       return address(_product);
 
-  }
-  function getSize() public view returns(uint){
-  return productSize;
-  }
+    }
+
+    function getSize() public view returns(uint){
+        return productSize;
+    }
 
     function removeProduct(address _product)
     external

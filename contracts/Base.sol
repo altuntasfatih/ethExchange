@@ -5,7 +5,6 @@ contract Base{
     address owner;
     ProductRegistry public  productDb;
 
-
     modifier onlyOwner(){
         if (owner==msg.sender){
         _;
