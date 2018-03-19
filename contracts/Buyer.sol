@@ -6,7 +6,7 @@ import "./ProductRegistry.sol";
 contract Buyer is Base {
 
 
-  function Buyer(address _proRegistry) {
+  function Buyer(address _proRegistry ) public {
     productDb=ProductRegistry(_proRegistry);
   }
 
