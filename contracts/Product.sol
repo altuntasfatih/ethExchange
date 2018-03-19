@@ -36,50 +36,47 @@ contract Product {
         _;
     }
 
-   modifier onlyBuyerOrOwner(){
+    modifier onlyBuyerOrOwner(){
      //this is not correct fix this
-     if (msg.sender == Buyer || msg.sender== product.owner)
-     {
-          _;
+        if (msg.sender == Buyer || msg.sender == product.owner )
+        {
+            _;
+        }else{
+            revert();
+        }
+    }
 
-     }else{
-        revert();
-     }
-
-
-   }
-
-   modifier checkLock(address msgSender){
-       if (product.lock != msgSender) {
-          revert();
-       }
-       _;
-   }
+    modifier checkLock(address msgSender){
+        if (product.lock != msgSender) {
+            revert();
+        }
+        _;
+    }
     modifier checkLocked(){
-       if (checkLockable()) {
-          revert();
-       }
-       _;
-   }
+        if (checkLockable()) {
+            revert();
+        }
+        _;
+    }
 
-   function checkLockable() public view returns (bool){
-       if (product.lock != address(0) ) {
-          return false;
-       }
-       return true;
-   }
+    function checkLockable() public view returns (bool){
+        if (product.lock != address(0) ) {
+            return false;
+        }
+        return true;
+    }
 
-   function checkBuyable(address _msgSender,uint _value)
-   public
-   timeIsUp
-   returns (bool)
+    function checkBuyable(address _msgSender,uint _value)
+    public
+    timeIsUp
+    returns (bool)
    {
        //require(product.lock == msgsender && product.price == value);
-       if (product.lock != _msgSender || product.lock == address(0) ||  product.price != _value || cState != State.Locked ) {
-          return false;
-       }
-       return true;
-   }
+        if (product.lock != _msgSender || product.lock == address(0) ||  product.price != _value || cState != State.Locked ) {
+            return false;
+        }
+        return true;
+    }
 
 
     function construct(
@@ -103,56 +100,55 @@ contract Product {
     }
 
 
-   function lockProduct(address viewer)
-   public
-   timeIsUp()
-   checkLocked()
+    function lockProduct(address viewer)
+    public
+    timeIsUp()
+    checkLocked()
    {
         //add modifier this function restrict only callaable from merchants contracts
 
-       require(checkLockable());
-       require(product.price >= product.minPrice);
-       product.lock=viewer;
-       product.viewCount+=1;
-       product.price-=1;//change this :)
-       product.viewerlist.push(viewer);//maybe mapping
-       product.viewers[viewer]+=1000 ;//in wei
-       product.lockTime=now+60;//now is block.timestamp
-       cState=State.Locked;
+        require(checkLockable());
+        require(product.price >= product.minPrice);
+        product.lock=viewer;
+        product.viewCount+=1;
+        product.price-=1;//change this :)
+        product.viewerlist.push(viewer);//maybe mapping
+        product.viewers[viewer]+=1000 ;//in wei
+        product.lockTime=now+60;//now is block.timestamp
+        cState=State.Locked;
+
+    }
+
+    function generalInfo() public
+    view
+    returns(address,string,uint,uint64) //owner,name
+    {
+        return (product.owner,product.name,product.viewCount,product.createdOn);
+    }
 
 
-   }
+    function pricelInfo(address locker)
+    public
+    timeIsUp
+    checkLock(locker)
+    returns(uint,string) //owner,name
+    {
+        return (product.price,product.name);
+    }
 
-   function generalInfo() public
-   view
-   returns(address,string,uint,uint64) //owner,name
-   {
-     return (product.owner,product.name,product.viewCount,product.createdOn);
-   }
-
-
-   function pricelInfo(address locker)
-   public
-   timeIsUp
-   checkLock(locker)
-   returns(uint,string) //owner,name
-   {
-     return (product.price,product.name);
-   }
-
-   function getOwner()public
-   view
-   returns(address) //owner,name
-   {
-     return (product.owner);
-   }
+    function getOwner()public
+    view
+    returns(address) //owner,name
+    {
+        return (product.owner);
+    }
 
 
     function destroyProduct()external
     //add modifier only seller contract can call this,name
     onlyBuyerOrOwner()
     {
-      selfdestruct(product.owner);
+        selfdestruct(product.owner);
     }
 
 

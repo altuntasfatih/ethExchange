@@ -12,9 +12,9 @@ import seller from '../../build/contracts/Seller.json'
 import product from '../../build/contracts/product.json'
 
 
-var  addrBuyer="0x4e4e880edf3be969b7e687d8dab4daf363c35fbe"
-var  addrSeller="0x7a24eec476fb37763b6bdef725c3c8baa8d6410e"
-var  addrPRegistry="0x427f2ccd0070659e3b58e9c90f98fb6f36ced6e3";
+var  addrBuyer="0x03895cba8b56466bbe9e98125de8b563f2a46ec0"
+var  addrSeller="0x044b86f99d7de9f85b83ff734ba646ed5a87fa2c"
+var  addrPRegistry="0x1d603c445a8682e8588d68f97d289d83e541a6a6";
 var account;
 
 window.App = {

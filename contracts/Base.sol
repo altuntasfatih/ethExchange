@@ -2,25 +2,24 @@ pragma solidity ^0.4.4;
 import "./ProductRegistry.sol";
 
 contract Base{
+    
     address owner;
     ProductRegistry public  productDb;
 
     modifier onlyOwner(){
         if (owner==msg.sender){
-        _;
+            _;
         }else{
             revert();
         }
     }
 
     function Base  () public{
-          owner= msg.sender;
-
-
+        owner = msg.sender ;
     }
 
     function getDb() public view onlyOwner returns  (address){
-      return address(productDb);
+        return address(productDb);
     }
 
     function transferOwner(uint64 _value)
