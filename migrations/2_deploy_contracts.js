@@ -1,5 +1,3 @@
-
-
 var Base=artifacts.require("./Base.sol");
 var Buyer=artifacts.require("./Buyer.sol");
 var Seller=artifacts.require("./Seller.sol");

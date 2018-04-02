@@ -39,7 +39,7 @@ contract("Event of Product",function(accounts){
   it('List events of product:',function(){
     proRegistry.deployed().then(function(instance){
       instance.allEvents({fromBlock: 0, toBlock: 'latest'}, function(error, result) {
-        console.log("Adress of product : ",result.args.product);
+        console.log("Atdress of product : ",result.args.product);
         productAddress.push(result.args.product);
 
       });
