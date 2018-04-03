@@ -13,7 +13,7 @@ contract Seller is Base {
     }
 
     modifier checkParameter(uint _minPrice,uint _price){
-        if (_minPrice < _price) //+ (_price*0.1) )
+        if (_minPrice > _price) //+ (_price*0.1) )
         { 
             revert();
         }

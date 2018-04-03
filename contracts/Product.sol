@@ -118,7 +118,7 @@ contract Product {
         cState=State.Locked;
 
     }
-
+    //todo add lockstatus to returns
     function generalInfo() public
     view
     returns(address,string,uint,uint64) //owner,name

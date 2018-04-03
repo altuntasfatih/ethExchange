@@ -8,20 +8,45 @@ let chainInterface = new ChainInterFace();
 
 
 
+
 class Product extends React.Component{
     constructor(props){
         super(props);
-        console.log("Address: ",props)
+
+        this.state = {
+            address:props.value[1],
+            name:"",
+            crateOn:0,
+            viewCount:0,
+            owner:"",
+        };
+
+    }
+    componentDidMount=()=>{
+        let product=chainInterface.getProduct(this.state.address);
+        let that = this;
+
+        const temp=product.methods.generalInfo().call();
+        temp.then(function(val) {
+            console.log(val);
+            that.setState({
+                owner:val[0],
+                name:val[1],
+                viewCount:val[2],
+                crateOn:val[3],
+
+            })
+        });
     }
     render() {
         return(
         <li className="span3">
             <div className="product-box">
                 <span className="sale_tag"></span>
-                <p><a href="product_detail.html"><img src="themes/images/ladies/1.jpg" alt="" /></a></p>
-                <a href="product_detail.html" className="title">Ut wisi enim ad</a><br/>
-                <a href="products.html" className="category">Commodo consequat</a>
-                <p className="price">$17.25</p>
+                <p><a href="about:blank"><img src="themes/images/etherium.png" alt="" /></a></p>
+                <a href="about:blank" className="title">{this.state.name}</a><br/>
+                <a href="about:blank" className="category">{this.state.owner}</a>
+                <p className="price">{this.state.viewCount}</p>
             </div>
         </li>
         );
@@ -35,13 +60,17 @@ class ProductList extends React.Component {
 
         this.state = {
             account:"",
+            productArray:[],
         };
 
 
     }
     componentDidMount =()=>{
 
-       this.setAddress()
+       this.setAddress();
+       chainInterface.getProductList(this);
+
+
     }
     setAddress(){
         let that = this;
@@ -63,6 +92,8 @@ class ProductList extends React.Component {
     }
 
     renderProduct(address) {
+
+
         document.getElementById("accountAddress").innerText=this.state.account;
         return (
             <Product
@@ -73,50 +104,50 @@ class ProductList extends React.Component {
 
     render() {
 
-        return (
+        const listProduct = this.state.productArray.map((item) =>
 
-        <div>
-            {this.renderProduct(5)}
-        </div>
+            <div>
+                {this.renderProduct(item)}
+            </div>
+        );
+
+        console.log(listProduct);
+
+        return (
+            <div className="row">
+                <div className="span12">
+                    <div className="row">
+                        <div className="span12">
+                            <h4 className="title">
+                                <span className="pull-left"><span className="text"><span className="line">Feature <strong>Products</strong></span></span></span>
+                                <span className="pull-right"><a className="left button" href="#myCarousel" data-slide="prev"></a><a className="right button" href="#myCarousel" data-slide="next"></a>
+									</span>
+                            </h4>
+                            <div id="myCarousel" className="myCarousel carousel slide">
+                                <div className="carousel-inner">
+                                    <div className="active item">
+                                        <ul className="thumbnails">
+                                            {listProduct}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+
 
         );
     }
 
 
 }
-/*
-class NavBar extends React.Component {
-    render(){
-        return(
-        <section className="navbar main-menu">
-            <div className="navbar-inner main-menu">
-                <a href="index.html" className="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></img></a>
-                <nav id="menu" className="pull-right">
-                    <ul>
-                        <li><a href="./products.html">Top Seller</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-    );
-    }
-
-}
-*/
-// ========================================
 
 ReactDOM.render(
   <ProductList />,
-  document.getElementById('root')
+  document.getElementById('main_component')
 );
 
-
-/*
-ReactDOM.render(
-    <NavBar />,
-    document.getElementById('nav_bar')
-);
-
-
-*/
 
