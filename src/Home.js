@@ -39,15 +39,15 @@ class Product extends React.Component{
     render() {
 
         return(
-        <li className="span3">
-            <div className="product-box">
-                <span className="sale_tag"></span>
-                <p><a href="about:blank"><img src="themes/images/etherium.png" alt="" /></a></p>
-                <a href="about:blank" className="title">{this.state.name}</a><br/>
-                <a href="about:blank" className="category">{this.state.crateOn}</a>
-                <p className="price">{this.state.viewCount}</p>
-            </div>
-        </li>
+            <li className="span3">
+                <div className="product-box">
+                    <span className="sale_tag"></span>
+                    <p><a href="about:blank"><img src="themes/images/etherium.png" alt="" /></a></p>
+                    <a href="about:blank" className="title">{this.state.name}</a><br/>
+                    <a href="about:blank" className="category">{this.state.crateOn}</a>
+                    <p className="price">{this.state.viewCount}</p>
+                </div>
+            </li>
         );
     }
 
@@ -64,8 +64,8 @@ class ProductList extends React.Component {
 
     }
     componentDidMount =()=>{
-       this.setAddress();
-       chainInterface.getProductList(this);
+        this.setAddress();
+        chainInterface.getProductList(this);
 
     }
     setAddress(){
@@ -141,8 +141,8 @@ class ProductList extends React.Component {
 }
 
 ReactDOM.render(
-  <ProductList />,
-  document.getElementById('main_component')
+    <ProductList />,
+    document.getElementById('main_component')
 );
 
 
