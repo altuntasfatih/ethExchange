@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route,Switch,Link } from 'react-router-dom';
 
-import Home from "./Home";
+import Home from "../Home";
+import ProductDetail from "../productDetail"
 
 
 export default () =>
@@ -9,11 +10,7 @@ export default () =>
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact render={props => <Home{...props}/>}/>
-                <Route path="/nav" exact component={Nav}/>
-                <Route path='/' component={Container}/>
-
-                <Route path="/home/2" exact component={Home}/>
-                <Route path='/address' component={Address} />
+                <Route path="/product/:value" component ={ProductDetail} />
                 <Route path='*' component={NotFound} />
             </Switch>
         </BrowserRouter>

@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-
-import ChainInterFace from "./app";
+import { Link } from 'react-router-dom';
+import ChainInterFace from "./interface";
 
 let chainInterface = new ChainInterFace();
 
@@ -42,9 +40,9 @@ class Product extends React.Component{
             <li className="span3">
                 <div className="product-box">
                     <span className="sale_tag"></span>
-                    <p><a href="about:blank"><img src="themes/images/etherium.png" alt="" /></a></p>
-                    <a href="about:blank" className="title">{this.state.name}</a><br/>
-                    <a href="about:blank" className="category">{this.state.crateOn}</a>
+                    <p><Link to={'/product/'+this.state.address }><img src="themes/images/etherium.png" alt="" /></Link></p>
+                    <Link to={'/product/'+this.state.address } className="title">{this.state.name}</Link><br/>
+                    <Link to={'/product/'+this.state.address } className="category">{this.state.crateOn}</Link>
                     <p className="price">{this.state.viewCount}</p>
                 </div>
             </li>
@@ -52,7 +50,7 @@ class Product extends React.Component{
     }
 
 }
-class ProductList extends React.Component {
+export  default  class ProductList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -139,10 +137,5 @@ class ProductList extends React.Component {
 
 
 }
-
-ReactDOM.render(
-    <ProductList />,
-    document.getElementById('main_component')
-);
 
 
