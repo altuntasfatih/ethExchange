@@ -6,7 +6,7 @@ let chainInterface = new ChainInterFace();
 
 export default  class ProductDetail extends React.Component{
     constructor(props){
-        super(props);
+        super("Here",props);
         console.log(props)
         this.state = {
             address:props.match.params.value,
@@ -37,18 +37,19 @@ export default  class ProductDetail extends React.Component{
 
 
         return(
-
+            <div>
             <div className="row">
                 <div className="span9">
                     <div className="row">
                         <div className="span4">
                             <a href="#" className="thumbnail" data-fancybox-group="group1"
-                               title="Description 1"><img alt="" src="themes/images/1.jpg"/></a>
+                               title="Description 1"><img alt="" src="../../../themes/images/etherium.png"/></a>
                         </div>
                         <div className="span5">
                             <address>
                                 <strong>Owner:</strong> <span>{this.state.owner}</span><br/>
                                 <strong>Name</strong> <span>{this.state.name}</span><br/>
+
                                 <strong>View Count</strong> <span>{this.state.viewCount}</span><br/>
                                 <strong>Created On</strong> <span>{this.state.crateOn}</span><br/>
                             </address>
@@ -57,6 +58,7 @@ export default  class ProductDetail extends React.Component{
                     </div>
                 </div>
             </div>
+    </div>
 
         );
 
