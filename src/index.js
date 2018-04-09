@@ -28,7 +28,7 @@ import App from './App';
                 <div className="span8">
                     <div className="account pull-right">
                         <ul className="user-menu">
-                            <li><a href="#">My Account</a></li>
+                            <li><a href={null}>My Account</a></li>
                             <li><a href="cart.html">Your Cart</a></li>
                             <li><a href="checkout.html">Checkout</a></li>
                             <li><a href="register.html">Login</a></li>

@@ -13,13 +13,17 @@ var products=[["iphone",8,10],
     ["c4",12,14],
     ["nitrat",4,6],
     ["fitil",17,20],
+    ["pencil",9,14],
+    ["rgp",33,56],
+    ["ak47",21,24],
 ];
 var productAddress=[];
 
 contract("Product Publish",function(accounts){
-
+    console.log("Address of product registry",proRegistry.address);
+    console.log("Address of selller",seller.address);
     products.forEach(function(product) {
-        console.log("Address of product registry",proRegistry.address);
+
         it('Publish product: '+product[0],function(){
             var contractInstance;
             seller.deployed().then(function(instance){

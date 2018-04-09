@@ -64,6 +64,7 @@ export  default  class ProductList extends React.Component {
         this.setAddress();
         chainInterface.getProductList(this);
 
+
     }
     setAddress(){
         let that = this;
@@ -76,10 +77,11 @@ export  default  class ProductList extends React.Component {
                 alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
                 return;
             }
+
             that.setState({
                 account:accs[0],
             })
-
+            chainInterface.publishProduct("Fatih",1,2,3,4,accs[0]);
         });
     }
 
@@ -110,11 +112,6 @@ export  default  class ProductList extends React.Component {
                 <div className="span12">
                     <div className="row">
                         <div className="span12">
-                            <h4 className="title">
-                                <span className="pull-left"><span className="text"><span className="line">Feature <strong>Products</strong></span></span></span>
-                                <span className="pull-right"><a className="left button" href="#myCarousel" data-slide="prev"></a><a className="right button" href="#myCarousel" data-slide="next"></a>
-									</span>
-                            </h4>
                             <div id="myCarousel" className="myCarousel carousel slide">
                                 <div className="carousel-inner">
                                     <div className="active item">

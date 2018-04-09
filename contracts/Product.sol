@@ -60,10 +60,10 @@ contract Product {
     }
 
     function checkLockable() public view returns (bool){
-        if (product.lock != address(0) ) {
-            return false;
+        if (product.lock == address(0) ) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     function checkBuyable(address _msgSender,uint _value)
@@ -102,13 +102,12 @@ contract Product {
 
     function lockProduct(address viewer)
     public
-    timeIsUp()
     checkLocked()
    {
         //add modifier this function restrict only callaable from merchants contracts
 
         require(checkLockable());
-        require(product.price >= product.minPrice);
+        //require(product.price >= product.minPrice);
         product.lock=viewer;
         product.viewCount+=1;
         product.price-=1;//change this :)
@@ -141,6 +140,13 @@ contract Product {
     returns(address) //owner,name
     {
         return (product.owner);
+    }
+
+    function getLock()public
+    view
+    returns(address) //owner,name
+    {
+        return (product.lock);
     }
 
 
