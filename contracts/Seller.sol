@@ -6,10 +6,24 @@ contract Seller is Base {
 
     event LogProductDeleted(address indexed owner, address indexed product);
     event LogProductPublished(address indexed owner, address indexed product);
+    event SetA(uint , uint );
+
+
+    uint a;
+
+
 
     function Seller(address _proRegistry) public {
 
         productDb = ProductRegistry(_proRegistry);
+    }
+
+    function getA() public view returns(uint){
+        return a;
+    }
+    function setA(uint _a) public {
+        SetA(a,_a);
+        a=_a;
     }
 
     modifier checkParameter(uint _minPrice,uint _price){

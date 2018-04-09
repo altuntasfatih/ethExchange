@@ -106,7 +106,7 @@ contract Product {
    {
         //add modifier this function restrict only callaable from merchants contracts
 
-        require(checkLockable());
+        //require(checkLockable());
         //require(product.price >= product.minPrice);
         product.lock=viewer;
         product.viewCount+=1;
