@@ -4,27 +4,33 @@ import contract from 'truffle-contract'
 import buyerJson from '../../build/contracts/Buyer.json'
 import sellerJson from '../../build/contracts/Seller.json'
 import productJson from '../../build/contracts/Product.json'
+import productRegistrJson from '../../build/contracts/ProductRegistry.json'
 
 var  addrBuyer='0xc0054e3654a7d2967fc2547a8a0857ddc7106450'
 var  addrSeller='0xf17fffeba8a0070c1464ca88bfedb1a067fa144a'
 var  addrPRegistry='0x88c015d75be972177f171efcf6fd708d095c83b5';
 
-const contractBuyer  = contract(buyerJson)
-const contractSeller = contract(sellerJson)
-const contractPRegistry = contract(productJson)
+var contracts={}
 
 let web3 = window.web3
-
 var isInjected = false
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider)
-  // Contract.setProvider(web3.currentProvider)
+  var productRContract = new web3.eth.Contract(productRegistrJson.abi,addrPRegistry);
   isInjected = true
+  contracts['Registry']=productRContract;
 } else {
   web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
-  // Contract.setProvider(new Web3.providers.HttpProvider('http://localhost:8545'))
+  var productRContract = new web3.eth.Contract(productRegistrJson.abi,addrPRegistry);
   isInjected = false
+  console.log("Burdayim");
+  console.log(productRContract)
+  contracts['Registry']=productRContract;
+
 }
+
+
+
 
 const NETWORKS = {
   '1': 'Main Net',
