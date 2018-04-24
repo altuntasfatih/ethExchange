@@ -13,7 +13,7 @@ export default new Vuex.Store({
       balance: null,
       error: null
     },
-    contractInstance: null
+    contractInstances: null
   },
   strict: true, // don't leave it true on production
   mutations: {
@@ -24,16 +24,25 @@ export default new Vuex.Store({
       state.web3.networkId = result.networkId
       state.web3.isInjected = result.isInjected
       state.web3.web3Instance = result.Instance
+    },
+    CONTRACTSPUSH (state, result) {
+      state.contractInstances = result
     }
   },
   actions: {
     createWeb3 ({ commit }, result) {
       commit('CREATEWEB3', result)
+    },
+    contractPush ({ commit }, result) {
+      commit('CONTRACTSPUSH', result)
     }
   },
   getters: {
     web3state: state => {
       return state.web3
+    },
+    getContracts: state => {
+      return state.contractInstances
     }
   }
 })

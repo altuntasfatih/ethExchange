@@ -4,7 +4,7 @@ import App from './App'
 import router from './router'
 import store from './store/store'
 
-import { getNetIdString, getEthWallets, getBalance, isInjected, web3 } from './web3Service'
+import { getNetIdString, getEthWallets, getBalance, isInjected, web3,contracts } from './web3Service'
 
 Vue.config.productionTip = false
 
@@ -21,6 +21,7 @@ Vue.config.productionTip = false
       'web3Instance': web3
     }
     store.dispatch('createWeb3', result)
+    store.dispatch('contractPush', contracts)
   } catch (e) {
     // TODO: Handle error
 
