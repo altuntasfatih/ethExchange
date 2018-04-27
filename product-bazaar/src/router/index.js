@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Hello from '../components/Hello.vue'
 import Start from '../components/Start.vue'
+import ProductList from '../components/ProductList.vue'
 
 Vue.use(Router)
 
@@ -22,7 +23,12 @@ export default new Router({
       components: {
         default: Start
       }
+    },
+    {
+      path: '/list',
+      components: {
+        default: ProductList
+      }
     }
-
   ]
 })

@@ -4,7 +4,7 @@ import App from './App'
 import router from './router'
 import store from './store/store'
 
-import { getNetIdString, getEthWallets, getBalance, isInjected, web3,contracts } from './web3Service'
+import { getNetIdString, getEthWallets, getBalance, isInjected, web3, contracts } from './web3Service'
 
 Vue.config.productionTip = false
 

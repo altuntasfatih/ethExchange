@@ -5,10 +5,11 @@ import Web3 from 'web3'
 // import sellerJson from '../../build/contracts/Seller.json'
 // import productJson from '../../build/contracts/Product.json'
 import productRegistrJson from '../../build/contracts/ProductRegistry.json'
-
-var  addrBuyer = '0xc0054e3654a7d2967fc2547a8a0857ddc7106450'
-var  addrSeller = '0xf17fffeba8a0070c1464ca88bfedb1a067fa144a'
-var  addrPRegistry = '0x88c015d75be972177f171efcf6fd708d095c83b5'
+/*
+var addrBuyer = '0xc0054e3654a7d2967fc2547a8a0857ddc7106450'
+var addrSeller = '0xf17fffeba8a0070c1464ca88bfedb1a067fa144a'
+*/
+var addrPRegistry = '0x88c015d75be972177f171efcf6fd708d095c83b5'
 
 var contracts = {}
 let web3 = window.web3
@@ -25,7 +26,6 @@ if (typeof web3 !== 'undefined') {
   isInjected = false
   console.log(productRContract)
   contracts['Registry'] = productRContract
-
 }
 
 const NETWORKS = {
