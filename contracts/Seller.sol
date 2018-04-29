@@ -12,7 +12,6 @@ contract Seller is Base {
     uint a;
 
 
-
     function Seller(address _proRegistry) public {
 
         productDb = ProductRegistry(_proRegistry);
@@ -57,8 +56,8 @@ contract Seller is Base {
     {
         require(Product(_product).getOwner()==msg.sender);
         Product(_product).destroyProduct();
+        //productDb.removeProduct
         LogProductDeleted(msg.sender,_product);
-
     }
 
 }

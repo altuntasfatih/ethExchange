@@ -1,7 +1,7 @@
-var buyer  = artifacts.require("./Buyer.sol");
-var Product  = artifacts.require("./Product.sol");
-var seller = artifacts.require("./Seller.sol");
-var proRegistry=artifacts.require("./ProductRegistry.sol");
+var BuyerContract  = artifacts.require("./Buyer.sol");
+var ProductContract  = artifacts.require("./Product.sol");
+var SellerContract = artifacts.require("./Seller.sol");
+var ProductRegistryContract=artifacts.require("./ProductRegistry.sol");
 
 
 var products=[["iphone",8,10],
@@ -19,33 +19,36 @@ var products=[["iphone",8,10],
 ];
 var productAddress=[];
 
-contract("Product Publish",function(accounts){
-    console.log("Address of product registry",proRegistry.address);
-    console.log("Address of selller",seller.address);
-    products.forEach(function(product) {
 
-        it('Publish product: '+product[0],function(){
-            var contractInstance;
-            seller.deployed().then(function(instance){
-                contractInstance=instance;
-                return contractInstance.publishProduct(product[0],product[1],product[2],{value:web3.toWei(0.1,'ether'),from:accounts[0]});
-            }).then(function(tx){
-                //console.log(web3.eth.getBalance(contractInstance.address));
-            })
+const isRevertError = (error) => {
+    const invalidOpcode = error.message.search('invalid opcode') >= 0;
+    const outOfGas = error.message.search('out of gas') >= 0;
+    const revert = error.message.search('revert') >= 0;
+    return invalidOpcode || outOfGas || revert;
+}
+
+console.log("Address of product registry :",ProductRegistryContract.address);
+console.log("Address of selller          :",SellerContract.address);
+
+contract("Product Bazaar",function(accounts){
+    let _contract;
+
+    describe('Put products on bazzar', function () {
+        before(function() {
+
         });
+        products.forEach(function(item,index) {
 
-    });
+            it('Publish product: '+item[0],async () => {
+                _contract = await SellerContract.deployed();
+                 const result=await  _contract.publishProduct(item[0],item[1],item[2],{value:web3.toWei(0.1,'ether'),from:accounts[0]});
+                 assert(result.logs[0].event=='LogProductPublished', "Failed")
 
-    it('List events of product:',function(){
-        proRegistry.deployed().then(function(instance){
-            instance.allEvents({fromBlock: 0, toBlock: 'latest'}, function(error, result) {
-                console.log("Adress of product : ",result.args.product);
-                productAddress.push(result.args.product);
 
             });
 
         });
+
     });
 
 });
-

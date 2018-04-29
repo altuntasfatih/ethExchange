@@ -1,9 +1,8 @@
 pragma solidity ^0.4.4;
 
-
 contract Product {
 
-    struct Product {
+    struct Item {
         address owner;
         uint price;
         string name;
@@ -21,7 +20,7 @@ contract Product {
 
     State public cState;
 
-    Product private product;
+    Item private product;
    //Buyer public constant ens = Buyer(0x314159265dD8dbb310642f98f50C066173C1259b);
 
     address public Buyer;
@@ -37,13 +36,8 @@ contract Product {
     }
 
     modifier onlyBuyerOrOwner(){
-     //this is not correct fix this
-        if (msg.sender == Buyer || msg.sender == product.owner )
-        {
-            _;
-        }else{
-            revert();
-        }
+        require(msg.sender == product.owner);
+        _;
     }
 
     modifier checkLock(address msgSender){
