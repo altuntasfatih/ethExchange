@@ -37,13 +37,12 @@ contract("Product Bazaar",function(accounts){
         before(function() {
 
         });
-        products.forEach(function(item,index) {
 
+        products.forEach(function(item,index) {
             it('Publish product: '+item[0],async () => {
                 _contract = await SellerContract.deployed();
                  const result=await  _contract.publishProduct(item[0],item[1],item[2],{value:web3.toWei(0.1,'ether'),from:accounts[0]});
                  assert(result.logs[0].event=='LogProductPublished', "Failed")
-
 
             });
 

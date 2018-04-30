@@ -1,41 +1,38 @@
-
 <template>
   <div class="container">
     <div class="well well-sm">
       <strong>Display</strong>
     </div>
-
     <div id="products" class="row list-group">
-
-      <div class="item  col-xs-4 col-lg-4"  v-for="product in products" track-by="id" v-bind:key="product.address">
+      <div class="item  col-xs-12 col-lg-12 list-group-item"  v-for="product in products" track-by="id" v-bind:key="product.address">
         <div class="thumbnail">
-          <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+          <img class="group list-group-image" src="http://placehold.it/350x250/000/fff" alt="" />
           <div class="caption">
             <h4 class="group inner list-group-item-heading">
               {{product.name}}</h4>
             <p class="group inner list-group-item-text">
-              {{product.owner}}</p>
+              {{    product.owner}}</p>
             <div class="row">
               <div class="col-xs-12 col-md-6">
-                <p class="lead fatih">
+                <p class="lead">
+                  {{product.price}}</p>
+                <p class="lead">
                   {{product.price}}</p>
               </div>
-              <div class="col-xs-12 col-md-6">
-                <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
+              <div class="col-xs-12 col-md-12">
+                <router-link :to="{ path: '/product/'+ product.address }"><button class="btn btn-success" >Show Details</button></router-link>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
 </template>
 
-<style>
+<style >
 .glyphicon { margin-right:5px; }
-.fatih z
 .thumbnail
 {
   margin-bottom: 20px;
@@ -90,12 +87,12 @@
 }
 .list-group-item-text
 {
-  margin: 0 0 11px;
+  margin: 0 0 10px;
 }
 
 </style>
 <script>
-import store from '../store/store'
+import store from '@/store/store'
 window.mystorage = {
   depo: store
 }
@@ -106,16 +103,19 @@ export default {
       name: 'fatih'
     }
   },
-
   mounted () {
     let _contract = store.getters.getContracts.Registry
     _contract.getPastEvents({ fromBlock: 0, toBlock: 'latest'}, (err, event) => {
-      console.log(this.name)
       event.forEach((element) => {
         element = element.returnValues
         this.products.push({'name': element.name, 'owner': element.owner, 'address': element.product, 'price': 10})
       })
     })
+  },
+  methods: {
+    showDetails: function (owner) {
+      console.log('owner:->', owner)
+    }
   }
 }
 </script>

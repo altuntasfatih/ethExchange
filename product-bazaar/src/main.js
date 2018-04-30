@@ -4,8 +4,12 @@ import App from './App'
 import router from './router'
 import store from './store/store'
 
-import { getNetIdString, getEthWallets, getBalance, isInjected, web3, contracts } from './web3Service'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import { getNetIdString, getEthWallets, getBalance, isInjected, web3, contracts } from './web3Service'
+Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
 ;(async () => {
@@ -18,7 +22,7 @@ Vue.config.productionTip = false
       'coinbase': ethWallets[0],
       'netIdString': netIdString,
       'isInjected': isInjected,
-      'web3Instance': web3
+      'instance': web3
     }
     store.dispatch('createWeb3', result)
     store.dispatch('contractPush', contracts)

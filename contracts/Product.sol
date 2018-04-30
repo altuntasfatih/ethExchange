@@ -116,7 +116,7 @@ contract Product {
     view
     returns(address,string,uint,uint64) //owner,name
     {
-        return (product.owner,product.name,product.viewCount,product.createdOn);
+        return (product.owner,product.name,product.viewCount,product.createdOn,cState);
     }
 
 
