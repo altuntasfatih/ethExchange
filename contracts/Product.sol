@@ -41,15 +41,11 @@ contract Product {
     }
 
     modifier checkLock(address msgSender){
-        if (product.lock != msgSender) {
-            revert();
-        }
+        require(product.lock == msgSender);
         _;
     }
     modifier checkLocked(){
-        if (checkLockable()) {
-            revert();
-        }
+        require(checkLockable());
         _;
     }
 
@@ -95,12 +91,15 @@ contract Product {
     function lockProduct()
     public
     payable
+    timeIsUp
     checkLocked()
     {
         //add modifier this function restrict only callaable from merchants contracts
 
         //require(checkLockable());
-        //require(product.price >= product.minPrice);
+        require(product.price >= product.minPrice);
+
+        require(msg.value == (1* 10**17));
 
         product.lock=msg.sender;
         product.viewCount+=1;

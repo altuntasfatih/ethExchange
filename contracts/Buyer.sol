@@ -2,7 +2,7 @@ pragma solidity ^0.4.4;
 import "./Base.sol";
 import "./Product.sol";
 import "./ProductRegistry.sol";
-
+//todo Remove this contract this is unnecarry
 contract Buyer is Base {
 
 
