@@ -21,7 +21,7 @@ contract Product {
     State public cState;
 
     Item private product;
-   //Buyer public constant ens = Buyer(0x314159265dD8dbb310642f98f50C066173C1259b);
+    //Buyer public constant ens = Buyer(0x314159265dD8dbb310642f98f50C066173C1259b);
 
     address public Buyer;
     address public Seller;
@@ -64,7 +64,7 @@ contract Product {
     public
     timeIsUp
     returns (bool)
-   {
+    {
        //require(product.lock == msgsender && product.price == value);
         if (product.lock != _msgSender || product.lock == address(0) ||  product.price != _value || cState != State.Locked ) {
             return false;
@@ -92,29 +92,28 @@ contract Product {
         product.price = _price;
         cState=State.Available;
     }
-
-
-    function lockProduct(address viewer)
+    function lockProduct()
     public
+    payable
     checkLocked()
-   {
+    {
         //add modifier this function restrict only callaable from merchants contracts
 
         //require(checkLockable());
         //require(product.price >= product.minPrice);
-        product.lock=viewer;
+
+        product.lock=msg.sender;
         product.viewCount+=1;
         product.price-=1;//change this :)
-        product.viewerlist.push(viewer);//maybe mapping
-        product.viewers[viewer]+=1000 ;//in wei
+        product.viewerlist.push(msg.sender);//maybe mapping
+        product.viewers[msg.sender]+=1000 ;//in wei
         product.lockTime=now+60;//now is block.timestamp
         cState=State.Locked;
 
     }
-    //todo add lockstatus to returns
     function generalInfo() public
     view
-    returns(address,string,uint,uint64) //owner,name
+    returns(address,string,uint,uint64,State)
     {
         return (product.owner,product.name,product.viewCount,product.createdOn,cState);
     }

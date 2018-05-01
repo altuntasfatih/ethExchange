@@ -33,7 +33,7 @@ contract Buyer is Base {
   checkLockable(_product)
   returns(bool){
     Product temp=Product(_product);
-    temp.lockProduct(msg.sender);
+    //temp.lockProduct(msg.sender);
     return true;
 
   }

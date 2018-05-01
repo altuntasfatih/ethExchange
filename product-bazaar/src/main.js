@@ -12,6 +12,10 @@ import { getNetIdString, getEthWallets, getBalance, isInjected, web3, contracts 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
+Vue.filter('uppercase', (key) => {
+  return key.toUpperCase()
+})
+
 ;(async () => {
   try {
     const ethWallets = await getEthWallets()

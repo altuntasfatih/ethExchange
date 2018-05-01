@@ -41,13 +41,23 @@ contract("Product Bazaar",function(accounts){
         products.forEach(function(item,index) {
             it('Publish product: '+item[0],async () => {
                 _contract = await SellerContract.deployed();
-                 const result=await  _contract.publishProduct(item[0],item[1],item[2],{value:web3.toWei(0.1,'ether'),from:accounts[0]});
-                 assert(result.logs[0].event=='LogProductPublished', "Failed")
-
+                const result=await  _contract.publishProduct(item[0],item[1],item[2],{value:web3.toWei(0.1,'ether'),from:accounts[0]});
+                assert(result.logs[0].event=='LogProductPublished', "Failed")
+                productAddress.push(result.logs[0].args.product)
             });
 
         });
 
     });
 
+
+    productAddress.forEach(function (item, index) {
+        it('Call Product info: ' + item, async () => {
+            _contract = await ProductContract.at(item)
+            const result = await  _contract.generalInfo();
+            console.log(result)
+            console.log("sadasdsa")
+        });
+
+    });
 });
