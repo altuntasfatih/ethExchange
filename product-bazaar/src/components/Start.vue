@@ -24,14 +24,16 @@ export default {
   },
   mounted () {
     let _contract = store.getters.getContracts.Registry
-    _contract.getPastEvents({ fromBlock: 0, toBlock: 'latest'}, (err, event) => {
-      console.log(this.name)
-      event.forEach((element) => {
-        element = element.returnValues
-        console.log(element)
-        this.proList.push([element.name, element.product, element.owner])
+    _contract.getPastEvents(
+      { fromBlock: 0, toBlock: 'latest'},
+      ( err, event) => {
+        console.log(this.name)
+        event.forEach((element) => {
+          element = element.returnValues
+          console.log(element)
+          this.proList.push([element.name, element.product, element.owner])
+        })
       })
-    })
   }
 }
 </script>

@@ -2,7 +2,7 @@ pragma solidity ^0.4.4;
 import "./Base.sol";
 import "./Product.sol";
 import "./ProductRegistry.sol";
-
+//todo Remove this contract this is unnecarry
 contract Buyer is Base {
 
 
@@ -33,7 +33,7 @@ contract Buyer is Base {
   checkLockable(_product)
   returns(bool){
     Product temp=Product(_product);
-    temp.lockProduct(msg.sender);
+    //temp.lockProduct(msg.sender);
     return true;
 
   }
