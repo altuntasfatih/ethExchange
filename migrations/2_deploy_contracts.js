@@ -1,5 +1,4 @@
 var Base=artifacts.require("./Base.sol");
-var Buyer=artifacts.require("./Buyer.sol");
 var Seller=artifacts.require("./Seller.sol");
 var Product=artifacts.require("./Product.sol");
 var ProductRegistry=artifacts.require("./ProductRegistry.sol");
@@ -7,8 +6,9 @@ var ProductRegistry=artifacts.require("./ProductRegistry.sol");
 
 module.exports = function(deployer) {
 
+
+
     deployer.deploy(ProductRegistry).then(function() {
-        //deployer.deploy(Buyer, ProductRegistry.address);
         deployer.deploy(Seller,ProductRegistry.address);
     }).then(function() {});
 

@@ -68,6 +68,11 @@ export default {
   created () {
     this.c_instance = getProduct(this.$route.params.id)
     this.web3 = store.getters.web3state.web3Instance
+    const temp = this.c_instance.methods.generalInfo().call()
+    temp.then(function (val) {
+      this.item = temp
+      console.log(temp)
+    }).bind(this)
   },
   methods: {
     lock: function () {

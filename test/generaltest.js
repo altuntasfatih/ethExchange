@@ -1,5 +1,3 @@
-var BuyerContract  = artifacts.require("./Buyer.sol");
-var ProductContract  = artifacts.require("./Product.sol");
 var SellerContract = artifacts.require("./Seller.sol");
 var ProductRegistryContract=artifacts.require("./ProductRegistry.sol");
 
@@ -41,7 +39,7 @@ contract("Product Bazaar",function(accounts){
         products.forEach(function(item,index) {
             it('Publish product: '+item[0],async () => {
                 _contract = await SellerContract.deployed();
-                const result=await  _contract.publishProduct(item[0],item[1],item[2],{value:web3.toWei(0.1,'ether'),from:accounts[0]});
+                const result=await  _contract.publishProduct(item[0],item[1],item[2],true,{value:web3.toWei(0.1,'ether'),from:accounts[0]});
                 assert(result.logs[0].event=='LogProductPublished', "Failed")
                 productAddress.push(result.logs[0].args.product)
             });
@@ -60,4 +58,5 @@ contract("Product Bazaar",function(accounts){
         });
 
     });
+
 });

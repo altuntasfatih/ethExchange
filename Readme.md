@@ -25,4 +25,11 @@ npm run e2e
 
 # run all tests
 npm test
+
 ```
+## Truffle Setup
+
+#  tests
+truffle test
+#  migrate
+truffle migrate --reset

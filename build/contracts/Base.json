@@ -78,8 +78,8 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506104308061005e6000396000f30060606040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806337cbf4351461007257806341c0e1b5146100c75780635df80d58146100dc5780637456f87c14610121578063aaa4842514610176575b600080fd5b341561007d57600080fd5b6100856101cb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100d257600080fd5b6100da610254565b005b34156100e757600080fd5b610107600480803567ffffffffffffffff169060200190919050506102e8565b604051808215151515815260200191505060405180910390f35b341561012c57600080fd5b6101346103b5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561018157600080fd5b6101896103db565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60003373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141561024c57600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050610251565b600080fd5b90565b3373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156102e3576000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b600080fd5b6000803373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156103aa576000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc8467ffffffffffffffff169081150290604051600060405180830381858888f1935050505090508091506103af565b600080fd5b50919050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050905600a165627a7a723058201c63af9f384fbe4932d2cb75a15882f946d12cc5b95d6624d7734b6f77fc7e770029",
-  "deployedBytecode": "0x60606040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806337cbf4351461007257806341c0e1b5146100c75780635df80d58146100dc5780637456f87c14610121578063aaa4842514610176575b600080fd5b341561007d57600080fd5b6100856101cb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100d257600080fd5b6100da610254565b005b34156100e757600080fd5b610107600480803567ffffffffffffffff169060200190919050506102e8565b604051808215151515815260200191505060405180910390f35b341561012c57600080fd5b6101346103b5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561018157600080fd5b6101896103db565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60003373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141561024c57600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050610251565b600080fd5b90565b3373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156102e3576000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b600080fd5b6000803373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156103aa576000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc8467ffffffffffffffff169081150290604051600060405180830381858888f1935050505090508091506103af565b600080fd5b50919050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050905600a165627a7a723058201c63af9f384fbe4932d2cb75a15882f946d12cc5b95d6624d7734b6f77fc7e770029",
+  "bytecode": "0x6060604052341561000f57600080fd5b336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506104308061005e6000396000f30060606040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806337cbf4351461007257806341c0e1b5146100c75780635df80d58146100dc5780637456f87c14610121578063aaa4842514610176575b600080fd5b341561007d57600080fd5b6100856101cb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100d257600080fd5b6100da610254565b005b34156100e757600080fd5b610107600480803567ffffffffffffffff169060200190919050506102e8565b604051808215151515815260200191505060405180910390f35b341561012c57600080fd5b6101346103b5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561018157600080fd5b6101896103db565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60003373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141561024c57600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050610251565b600080fd5b90565b3373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156102e3576000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b600080fd5b6000803373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156103aa576000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc8467ffffffffffffffff169081150290604051600060405180830381858888f1935050505090508091506103af565b600080fd5b50919050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050905600a165627a7a7230582053dfe9eaac4349151dd92ea5e62032c745c7d9fc56b1bd61a2075f51488586630029",
+  "deployedBytecode": "0x60606040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806337cbf4351461007257806341c0e1b5146100c75780635df80d58146100dc5780637456f87c14610121578063aaa4842514610176575b600080fd5b341561007d57600080fd5b6100856101cb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100d257600080fd5b6100da610254565b005b34156100e757600080fd5b610107600480803567ffffffffffffffff169060200190919050506102e8565b604051808215151515815260200191505060405180910390f35b341561012c57600080fd5b6101346103b5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561018157600080fd5b6101896103db565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60003373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141561024c57600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050610251565b600080fd5b90565b3373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156102e3576000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b600080fd5b6000803373ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156103aa576000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc8467ffffffffffffffff169081150290604051600060405180830381858888f1935050505090508091506103af565b600080fd5b50919050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050905600a165627a7a7230582053dfe9eaac4349151dd92ea5e62032c745c7d9fc56b1bd61a2075f51488586630029",
   "sourceMap": "57:696:0:-;;;268:60;;;;;;;;310:10;302:5;;:18;;;;;;;;;;;;;;;;;;57:696;;;;;;",
   "deployedSourceMap": "57:696:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;334:99;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;594:69;;;;;;;;;;;;;;439:149;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;100:33;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;669:82;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;334:99;383:7;182:10;175:17;;:5;;;;;;;;;;;:17;;;171:85;;;416:9;;;;;;;;;;;401:25;;171:85;;;237:8;;;171:85;334:99;:::o;594:69::-;182:10;175:17;;:5;;;;;;;;;;;:17;;;171:85;;;650:5;;;;;;;;;;;637:19;;;171:85;237:8;;;439:149;515:4;530:9;182:10;175:17;;:5;;;;;;;;;;;:17;;;171:85;;;542:5;;;;;;;;;;;:10;;:18;553:6;542:18;;;;;;;;;;;;;;;;;;;;;;;;;530:30;;577:4;570:11;;171:85;;;237:8;;;171:85;439:149;;;;:::o;100:33::-;;;;;;;;;;;;;:::o;669:82::-;713:7;739:5;;;;;;;;;;;732:12;;669:82;:::o",
   "source": "pragma solidity ^0.4.4;\nimport \"./ProductRegistry.sol\";\n\ncontract Base{\n    \n    address owner;\n    ProductRegistry public  productDb;\n\n\n    modifier onlyOwner(){\n        if (owner==msg.sender){\n            _;\n        }else{\n            revert();\n        }\n    }\n\n    function Base  () public{\n        owner = msg.sender ;\n    }\n\n    function getDb() public view onlyOwner returns  (address){\n        return address(productDb);\n    }\n\n    function transferOwner(uint64 _value)\n    public\n    onlyOwner\n    returns (bool){\n        bool sent = owner.send(_value);\n        return sent;\n    }\n\n    function kill() public onlyOwner{\n\n        selfdestruct(owner);\n    }\n\n    function owneraddress() public view returns(address){\n\n        return owner;\n    }\n}\n",
@@ -111,7 +111,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 80,
-        "sourceUnit": 791,
+        "sourceUnit": 779,
         "src": "24:31:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -165,7 +165,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ProductRegistry_$790",
+              "typeIdentifier": "t_contract$_ProductRegistry_$778",
               "typeString": "contract ProductRegistry"
             },
             "typeName": {
@@ -173,10 +173,10 @@
               "id": 5,
               "name": "ProductRegistry",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 790,
+              "referencedDeclaration": 778,
               "src": "100:15:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ProductRegistry_$790",
+                "typeIdentifier": "t_contract$_ProductRegistry_$778",
                 "typeString": "contract ProductRegistry"
               }
             },
@@ -224,7 +224,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 957,
+                        "referencedDeclaration": 946,
                         "src": "182:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -266,7 +266,7 @@
                             "name": "revert",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 961,
+                            "referencedDeclaration": 950,
                             "src": "237:6:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_revert_pure$__$returns$__$",
@@ -360,7 +360,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 957,
+                        "referencedDeclaration": 946,
                         "src": "310:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -438,7 +438,7 @@
                         "referencedDeclaration": 6,
                         "src": "416:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ProductRegistry_$790",
+                          "typeIdentifier": "t_contract$_ProductRegistry_$778",
                           "typeString": "contract ProductRegistry"
                         }
                       }
@@ -446,7 +446,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_ProductRegistry_$790",
+                          "typeIdentifier": "t_contract$_ProductRegistry_$778",
                           "typeString": "contract ProductRegistry"
                         }
                       ],
@@ -820,7 +820,7 @@
                       "name": "selfdestruct",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 963,
+                      "referencedDeclaration": 952,
                       "src": "637:12:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_$returns$__$",
@@ -1007,7 +1007,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 80,
-        "sourceUnit": 791,
+        "sourceUnit": 779,
         "src": "24:31:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1061,7 +1061,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ProductRegistry_$790",
+              "typeIdentifier": "t_contract$_ProductRegistry_$778",
               "typeString": "contract ProductRegistry"
             },
             "typeName": {
@@ -1069,10 +1069,10 @@
               "id": 5,
               "name": "ProductRegistry",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 790,
+              "referencedDeclaration": 778,
               "src": "100:15:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ProductRegistry_$790",
+                "typeIdentifier": "t_contract$_ProductRegistry_$778",
                 "typeString": "contract ProductRegistry"
               }
             },
@@ -1120,7 +1120,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 957,
+                        "referencedDeclaration": 946,
                         "src": "182:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1162,7 +1162,7 @@
                             "name": "revert",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 961,
+                            "referencedDeclaration": 950,
                             "src": "237:6:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_revert_pure$__$returns$__$",
@@ -1256,7 +1256,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 957,
+                        "referencedDeclaration": 946,
                         "src": "310:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1334,7 +1334,7 @@
                         "referencedDeclaration": 6,
                         "src": "416:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ProductRegistry_$790",
+                          "typeIdentifier": "t_contract$_ProductRegistry_$778",
                           "typeString": "contract ProductRegistry"
                         }
                       }
@@ -1342,7 +1342,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_ProductRegistry_$790",
+                          "typeIdentifier": "t_contract$_ProductRegistry_$778",
                           "typeString": "contract ProductRegistry"
                         }
                       ],
@@ -1716,7 +1716,7 @@
                       "name": "selfdestruct",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 963,
+                      "referencedDeclaration": 952,
                       "src": "637:12:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_$returns$__$",
@@ -1882,5 +1882,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-01T22:59:43.035Z"
+  "updatedAt": "2018-05-06T15:16:57.256Z"
 }

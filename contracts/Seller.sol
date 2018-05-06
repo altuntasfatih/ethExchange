@@ -36,19 +36,17 @@ contract Seller is Base {
     function publishProduct( 
         string _name,
         uint _minPrice,
-        uint _price)
+        uint _price,
+        bool _ontheBazzar)
     external
     payable
     checkParameter(_minPrice,_price)
     returns( address)
     {
-        if (msg.value != 1* 10**17 ){//assume 0.1 ether
-            revert();
-        }
-        address result=productDb.addProduct(_name,msg.sender,_minPrice,_price);
+        require(msg.value == 1* 10**17 ); //assume 0.1 is publishin gproduct
+        address result=productDb.addProduct(_name,msg.sender,_minPrice,_price,_ontheBazzar);
         LogProductPublished(msg.sender,result);
         return result;
-
     }
 
     function recallProduct(address _product)
