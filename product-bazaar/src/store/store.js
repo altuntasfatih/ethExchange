@@ -43,6 +43,9 @@ export default new Vuex.Store({
     },
     getContracts: state => {
       return state.contractInstances
+    },
+    coinBase: state => {
+      return state.web3.coinbase
     }
   }
 })

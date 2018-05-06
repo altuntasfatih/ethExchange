@@ -81,14 +81,16 @@ contract Product {
     }
     function lockProduct()
     public
-    payable
-    timeIsUp
-    checkLocked
     ontheBazzar
+    checkLocked
+    payable
     {
 
-        require(msg.value == (1* 10**17));
-        require(product.price >= (product.minPrice+(1* 10**17)));
+        //timeIsUp
+        //checkLocked
+        //ontheBazzar
+        //require(msg.value == (1* 10**17)); //check 0.1 ether
+        //require(product.price+ (1*10**18) >= (product.minPrice+(1* 10**17)));
 
         product.lock=msg.sender;
         product.viewCount+=1;
@@ -136,10 +138,10 @@ contract Product {
     }
 
     function generalInfo() public
-    view
-    returns(address,string,uint,uint64,State)
+    timeIsUp
+    returns(address,string,uint,uint64,State,bool)
     {
-        return (product.owner,product.name,product.viewCount,product.createdOn,cState);
+        return (product.owner,product.name,product.viewCount,product.createdOn,cState,ontheBazaar);
     }
 
     function pricelInfo()

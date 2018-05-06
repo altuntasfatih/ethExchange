@@ -3,7 +3,7 @@ import "./Product.sol";
 
 contract ProductRegistry {
 
-    event LogProductAdded(address indexed owner, address indexed product, string  name,bool ontheBazzar);
+    event LogProductAdded(address indexed owner, address indexed product, string  name,bool indexed ontheBazzar);
     event LogProductDeleted(address indexed owner, address indexed product, string  name);
 
 

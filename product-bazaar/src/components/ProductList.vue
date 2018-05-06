@@ -105,7 +105,7 @@ export default {
   },
   mounted () {
     let _contract = store.getters.getContracts.Registry
-    _contract.getPastEvents({ fromBlock: 0, toBlock: 'latest'}, (err, event) => {
+    _contract.getPastEvents({ ontheBazzar: true, fromBlock: 0, toBlock: 'latest'}, (err, event) => {
       event.forEach((element) => {
         element = element.returnValues
         this.products.push({'name': element.name, 'owner': element.owner, 'address': element.product, 'price': 10})

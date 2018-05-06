@@ -11,13 +11,13 @@
           <p class="group inner list-group-item-text">
             View Count: {{item['2']}}</p>
           <p class="group inner list-group-item-text">
+            Status of Product: {{item['4']}}</p>
+          <p class="group inner list-group-item-text">
             Create Time: {{createdTime}}</p>
           <div class="row">
             <div class="col-xs-12 col-md-12">
               <p class="lead">
                 vievver1</p>
-              <p class="lead">
-                vievver2</p>
             </div>
             <div class="col-xs-12 col-md-12">
               <button class="btn btn-primary" v-bind:disabled="lockClickable" v-on:click="lock()">Lock Product</button>
@@ -39,7 +39,6 @@ import productJson from '../../../build/contracts/Product.json'
 window.depo = {
   web3: store
 }
-let coinbase = store.getters.web3state.coinbase
 function getProduct (address) {
   let _web3 = store.getters.web3state.web3Instance
   return new _web3.eth.Contract(productJson.abi, address)
@@ -70,18 +69,27 @@ export default {
     this.web3 = store.getters.web3state.web3Instance
     const temp = this.c_instance.methods.generalInfo().call()
     temp.then(function (val) {
-      this.item = temp
-      console.log(temp)
-    }).bind(this)
+      this.item = val
+      console.log(val[5])
+    }.bind(this))
   },
   methods: {
     lock: function () {
-      console.log('Clicked Lock')
-      console.log(store.getters.web3state.web3Instance)
-      console.log(coinbase)
       const temp = this.c_instance.methods.lockProduct().send(
-        {value: this.web3.utils.toWei('0.1', 'ether'), from: coinbase, gas: 4700000})
-      temp.then(function (error, value) {
+        {value: this.web3.utils.toWei('0.1', 'ether'), from: store.getters.coinBase, gas: 4700000})
+      temp.then(function (value, error) {
+        if (error == null) {
+          alert('Product is locked')
+          this.$forceUpdate()
+        }
+        console.log(value)
+        console.log('E is ', error)
+      })
+    },
+    buyProduct: function () {
+      const temp = this.c_instance.methods.lockProduct().send(
+        {value: this.web3.utils.toWei('0.1', 'ether'), from: store.getters.coinBase, gas: 4700000})
+      temp.then(function (value, error) {
         console.log(error)
         console.log(value)
       })
