@@ -26,6 +26,6 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  computed: mapGetters(['web3state']),
+  computed: mapGetters(['web3state'])
 }
 </script>

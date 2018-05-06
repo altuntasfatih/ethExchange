@@ -39,7 +39,7 @@ import productJson from '../../../build/contracts/Product.json'
 window.depo = {
   web3: store
 }
-let coinbase=store.getters.web3state.coinbase;
+let coinbase = store.getters.web3state.coinbase
 function getProduct (address) {
   let _web3 = store.getters.web3state.web3Instance
   return new _web3.eth.Contract(productJson.abi, address)
@@ -51,7 +51,7 @@ export default {
       c_instance: '',
       address: this.$route.params.id,
       item: '',
-      web3: '',
+      web3: ''
     }
   },
   computed: {
@@ -68,12 +68,6 @@ export default {
   created () {
     this.c_instance = getProduct(this.$route.params.id)
     this.web3 = store.getters.web3state.web3Instance
-    const temp = this.c_instance.methods.generalInfo().call()
-    let that = this
-    temp.then(function (val) {
-      console.log(val)
-      that.item = val
-    })
   },
   methods: {
     lock: function () {

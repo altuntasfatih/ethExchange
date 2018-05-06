@@ -21,7 +21,6 @@ contract Product {
     State public cState;
 
     Item private product;
-    //Buyer public constant ens = Buyer(0x314159265dD8dbb310642f98f50C066173C1259b);
 
     address public Buyer;
     address public Seller;
