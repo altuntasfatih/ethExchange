@@ -1,14 +1,15 @@
 pragma solidity ^0.4.4;
-
+// price unit is miliether ,1000 milli ether is 1 ether
 contract Product {
 
     struct Item {
+        string name;
         address owner;
         uint price;
-        string name;
         uint minPrice;
         address lock;
         uint lockTime;
+        string imageHash;
         mapping (address => uint) viewers;
         address[] viewerlist;                   //adress of viewers for pay back
         uint viewCount;
@@ -29,7 +30,7 @@ contract Product {
 
     modifier timeIsUp() {
 
-        if (product.lockTime >= block.timestamp) {
+        if (product.lockTime < block.timestamp ) {
             product.lock = address(0);
             cState=State.Available;
         }
@@ -63,7 +64,8 @@ contract Product {
         address _owner,
         uint _minPrice,
         uint _price,
-        bool _ontheBazzar
+        bool _ontheBazzar,
+        string _imageHash
     )
         external
     {
@@ -74,6 +76,7 @@ contract Product {
         product.owner=msg.sender;
         product.owner = _owner;
         product.minPrice = _minPrice;
+        product.imageHash=_imageHash;
         product.createdOn = uint64(now);
         product.price = _price;
         cState=State.Available;
@@ -83,18 +86,19 @@ contract Product {
     public
     ontheBazzar
     checkLocked
+    timeIsUp
     payable
     {
 
         //timeIsUp
         //checkLocked
         //ontheBazzar
-        //require(msg.value == (1* 10**17)); //check 0.1 ether
-        //require(product.price+ (1*10**18) >= (product.minPrice+(1* 10**17)));
+        require(msg.value == (100* 10**15)); //check 100 mili ether(0.1 ether)
+        require(product.price  >= (product.minPrice+100));
 
         product.lock=msg.sender;
         product.viewCount+=1;
-        product.price-=(1* 10**17);         //0.1 ether  this :)
+        product.price-=100;         //100 milli ether is 0.1 ether
         product.viewerlist.push(msg.sender);//maybe mapping
         product.viewers[msg.sender]+=1000 ;//in wei
         product.lockTime=now+60;//now is block.timestamp
@@ -137,18 +141,20 @@ contract Product {
 
     }
 
-    function generalInfo() public
-    timeIsUp
-    returns(address,string,uint,uint64,State,bool)
+    function generalInfo() public view
+    returns(address,string,string,uint,uint64,State,bool,uint)
     {
-        return (product.owner,product.name,product.viewCount,product.createdOn,cState,ontheBazaar);
+        if(msg.sender==product.lock)
+            return (product.owner,product.name,product.imageHash,product.viewCount,product.createdOn,cState,ontheBazaar,product.price);
+        else
+            return (product.owner,product.name,product.imageHash,product.viewCount,product.createdOn,cState,ontheBazaar,0);
     }
 
-    function pricelInfo()
+    function priceInfo()
     public
-    timeIsUp
     checkLock
     ontheBazzar
+    view
     returns(uint,string) //owner,name
     {
         return (product.price,product.name);
@@ -177,6 +183,9 @@ contract Product {
 
     function getBalance() view public returns ( uint) {
         return address(this).balance ;
+    }
+    function getTime() public view  returns ( uint64) {
+        return uint64(now) ;
     }
 
 
