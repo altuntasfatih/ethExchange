@@ -1,4 +1,14 @@
 
+
+### Used Technologies
+> Vue.js
+
+> Web3js
+
+> Solidity
+
+> Ipfs
+
 ## Build Setup
 
 ``` bash
