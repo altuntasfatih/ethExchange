@@ -8,8 +8,11 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import { getNetIdString, getEthWallets, getBalance, isInjected, web3, contracts } from './web3Service'
+import { getNetIdString, getEthWallets, getBalance, isInjected, web3, contracts, ipfs } from './coreInterface'
+
 Vue.use(BootstrapVue)
+//
+
 Vue.config.productionTip = false
 
 Vue.filter('uppercase', (key) => {
@@ -30,6 +33,7 @@ Vue.filter('uppercase', (key) => {
     }
     store.dispatch('createWeb3', result)
     store.dispatch('contractPush', contracts)
+    store.dispatch('ipfsSet', ipfs)
   } catch (e) {
     // TODO: Handle error
 

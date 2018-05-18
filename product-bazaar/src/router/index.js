@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-
 import ProductDetail from '@/components/ProductDetail.vue'
 import Start from '@/components/Start.vue'
 import ProductList from '@/components/ProductList.vue'

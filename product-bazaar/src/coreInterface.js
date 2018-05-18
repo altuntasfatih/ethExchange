@@ -1,15 +1,11 @@
 import Web3 from 'web3'
-// import contract from 'truffle-contract'
+import ipfsAPI from 'ipfs-api'
 
-// import buyerJson from '../../build/contracts/Buyer.json'
-// import sellerJson from '../../build/contracts/Seller.json'
-// import productJson from '../../build/contracts/Product.json'
-import productRegistrJson from '../../build/contracts/ProductRegistry.json'
-/*
-var addrBuyer = '0xc0054e3654a7d2967fc2547a8a0857ddc7106450'
-var addrSeller = '0xf17fffeba8a0070c1464ca88bfedb1a067fa144a'
-*/
-var addrPRegistry = '0x88c015d75be972177f171efcf6fd708d095c83b5'
+import registryJson from '../../build/contracts/ProductRegistry.json'
+import factoryJson from '../../build/contracts/ProductFactory.json'
+
+var productRegistry = '0x88c015d75be972177f171efcf6fd708d095c83b5'
+var productFactory = '0xf17fffeba8a0070c1464ca88bfedb1a067fa144a'
 
 var contracts = {}
 let web3 = window.web3
@@ -17,15 +13,18 @@ var isInjected = false
 
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider)
-  let productRContract = new web3.eth.Contract(productRegistrJson.abi, addrPRegistry)
+  let productRContract = new web3.eth.Contract(registryJson.abi, productRegistry)
+  let factoryContract = new web3.eth.Contract(factoryJson.abi, productFactory)
   isInjected = true
   contracts['Registry'] = productRContract
+  contracts['Factory'] = factoryContract
 } else {
   web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
-  let productRContract = new web3.eth.Contract(productRegistrJson.abi, addrPRegistry)
-  isInjected = false
-  console.log(productRContract)
+  let productRContract = new web3.eth.Contract(registryJson.abi, productRegistry)
+  let factoryContract = new web3.eth.Contract(factoryJson.abi, productFactory)
+  isInjected = true
   contracts['Registry'] = productRContract
+  contracts['Factory'] = factoryContract
 }
 
 const NETWORKS = {
@@ -59,5 +58,6 @@ const getBalance = (account) =>
       reject(err)
     })
   })
+const ipfs = ipfsAPI('localhost', '5001', {protocol: 'http'})
 
-export { getEthWallets, getNetIdString, getBalance, isInjected, web3, contracts }
+export { getEthWallets, getNetIdString, getBalance, isInjected, web3, contracts, ipfs }

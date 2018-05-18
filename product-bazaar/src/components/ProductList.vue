@@ -6,10 +6,10 @@
     <div id="products" class="row list-group">
       <div class="item  col-xs-12 col-lg-12 list-group-item"  v-for="product in products" track-by="id" v-bind:key="product.address">
         <div class="thumbnail">
-          <img class="group list-group-image" src="http://placehold.it/350x250/000/fff" alt="" />
+          <img class="group list-group-image" :src="getImageUrl(product.imageHash)" />
           <div class="caption">
             <h4 class="group inner list-group-item-heading">
-              {{product.name}}</h4>
+              {{product.name }}</h4>
             <p class="group inner list-group-item-text">
               {{    product.owner}}</p>
             <div class="row">
@@ -105,16 +105,20 @@ export default {
   },
   mounted () {
     let _contract = store.getters.getContracts.Registry
-    _contract.getPastEvents({ ontheBazzar: true, fromBlock: 0, toBlock: 'latest'}, (err, event) => {
-      event.forEach((element) => {
-        element = element.returnValues
-        this.products.push({'name': element.name, 'owner': element.owner, 'address': element.product, 'price': 10})
+    _contract.getPastEvents(
+      { fromBlock: 0, toBlock: 'latest'}, (err, event) => {
+        event.forEach((element) => {
+          element = element.returnValues
+          this.products.push({'name': element.name, 'owner': element.owner, 'address': element.product, 'price': 10, 'imageHash': element.imageHash})
+        })
       })
-    })
   },
   methods: {
     showDetails: function (owner) {
       console.log('owner:->', owner)
+    },
+    getImageUrl: function (hash) {
+      return 'https://gateway.ipfs.io/ipfs/' + hash + '/'
     }
   }
 }

@@ -1,27 +1,31 @@
 <template>
   <div class="container">
-    <div class="item  col-xs-12 col-lg-10 list-group-item"  track-by="id" >
+    <div class="item  col-xs-12 col-lg-12 list-group-item"  track-by="id" >
       <div class="thumbnail">
-        <img class="group list-group-image" src="http://placehold.it/350x250/000/fff" alt="" />
+        <img class="group list-group-image" :src="getImageUrl(item['2'])" alt="" />
         <div class="caption">
           <h4 class="group inner list-group-item-heading">
-            {{item['1']}}</h4>
+            {{ item['1'] }}</h4>
           <p class="group inner list-group-item-text">
            Owner: {{item['0']}}</p>
           <p class="group inner list-group-item-text">
-            View Count: {{item['2']}}</p>
+            View Count: {{item['3']}}</p>
           <p class="group inner list-group-item-text">
-            Status of Product: {{item['4']}}</p>
+            Status of Product: {{item['5']}}</p>
           <p class="group inner list-group-item-text">
             Create Time: {{createdTime}}</p>
+          <p class="group inner list-group-item-text">
+            Price: {{getPrice}}</p>
+          <p class="group inner list-group-item-text">
+            In Sale: {{ item['6'] }}</p>
           <div class="row">
             <div class="col-xs-12 col-md-12">
               <p class="lead">
                 vievver1</p>
             </div>
             <div class="col-xs-12 col-md-12">
-              <button class="btn btn-primary" v-bind:disabled="lockClickable" v-on:click="lock()">Lock Product</button>
-              <button class="btn btn-primary" v-on:click="showDetails()">Buy product</button>
+              <button class="btn btn-primary"  v-on:click="lock()">Try to Lock</button>
+              <button class="btn btn-primary"  v-bind:disabled="buyAble" v-on:click="showDetails()">Buy product</button>
 
             </div>
           </div>
@@ -50,16 +54,25 @@ export default {
       c_instance: '',
       address: this.$route.params.id,
       item: '',
-      web3: ''
+      web3: '',
+      price: ''
+
     }
   },
   computed: {
     createdTime: function () {
-      var date = new Date(this.item['3'] * 1000)
+      var date = new Date(this.item['4'] * 1000)
       return date.toString()
     },
-    lockClickable: function () {
-      return !(this.item['4'] === '1')
+    buyAble: function () {
+      return !(this.item['5'] === '2')
+    },
+    getPrice: function () {
+      if (this.item['5'] === '2') {
+        if (this.price === '') { return this.item['7'] + 'mili ether' } else { return this.price + 'mili ether' }
+      } else {
+        return 'not locked'
+      }
     }
   },
   mounted () {
@@ -70,7 +83,7 @@ export default {
     const temp = this.c_instance.methods.generalInfo().call()
     temp.then(function (val) {
       this.item = val
-      console.log(val[5])
+      console.log(val)
     }.bind(this))
   },
   methods: {
@@ -79,12 +92,14 @@ export default {
         {value: this.web3.utils.toWei('0.1', 'ether'), from: store.getters.coinBase, gas: 4700000})
       temp.then(function (value, error) {
         if (error == null) {
-          alert('Product is locked')
-          this.$forceUpdate()
+          window.alert('Product is locked')
+          this.item['4'] = '2'
+          this.c_instance.methods.priceInfo().call().then(function (val) {
+            this.price = val
+            console.log('Price info', val)
+          }.bind(this))
         }
-        console.log(value)
-        console.log('E is ', error)
-      })
+      }.bind(this))
     },
     buyProduct: function () {
       const temp = this.c_instance.methods.lockProduct().send(
@@ -93,6 +108,9 @@ export default {
         console.log(error)
         console.log(value)
       })
+    },
+    getImageUrl: function (hash) {
+      return 'https://gateway.ipfs.io/ipfs/' + hash + '/'
     }
   }
 }
