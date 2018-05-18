@@ -2,7 +2,7 @@ pragma solidity ^0.4.4;
 import "./Base.sol";
 import "./ProductRegistry.sol";
 
-contract Seller is Base {
+contract ProductFactory is Base {
 
     event LogProductDeleted(address indexed owner, address indexed product);
     event LogProductPublished(address indexed owner, address indexed product);
@@ -11,8 +11,7 @@ contract Seller is Base {
 
     uint a;
 
-
-    function Seller(address _proRegistry) public {
+    constructor(address _proRegistry) public  {
 
         productDb = ProductRegistry(_proRegistry);
     }
@@ -21,7 +20,7 @@ contract Seller is Base {
         return a;
     }
     function setA(uint _a) public {
-        SetA(a,_a);
+        emit SetA(a,_a);
         a=_a;
     }
 
@@ -36,19 +35,18 @@ contract Seller is Base {
     function publishProduct( 
         string _name,
         uint _minPrice,
-        uint _price)
+        uint _price,
+        bool _ontheBazzar,
+        string _imageHash)
     external
     payable
     checkParameter(_minPrice,_price)
     returns( address)
     {
-        if (msg.value != 1* 10**17 ){//assume 0.1 ether
-            revert();
-        }
-        address result=productDb.addProduct(_name,msg.sender,_minPrice,_price);
-        LogProductPublished(msg.sender,result);
+        require(msg.value == 1* 10**17 ); //assume 0.1 is publishin gproduct
+        address result=productDb.addProduct(_name,msg.sender,_minPrice,_price,_ontheBazzar,_imageHash);
+        emit LogProductPublished(msg.sender,result);
         return result;
-
     }
 
     function recallProduct(address _product)
@@ -57,7 +55,7 @@ contract Seller is Base {
         require(Product(_product).getOwner()==msg.sender);
         Product(_product).destroyProduct();
         //productDb.removeProduct
-        LogProductDeleted(msg.sender,_product);
+        emit LogProductDeleted(msg.sender,_product);
     }
 
 }

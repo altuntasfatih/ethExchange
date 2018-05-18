@@ -3,7 +3,7 @@ import "./Product.sol";
 
 contract ProductRegistry {
 
-    event LogProductAdded(address indexed owner, address indexed product, string  name);
+    event LogProductAdded(address indexed owner, address indexed product,string name,string imageHash,bool ontheBazzar);
     event LogProductDeleted(address indexed owner, address indexed product, string  name);
 
 
@@ -14,29 +14,27 @@ contract ProductRegistry {
 
     bool isActive;
 
-    function  ProductRegistry()  public {
+    constructor () public  {
         isActive=true;
     }
-
 
     function addProduct(
     string _name,
     address _owner,
     uint _minPrice,
-    uint _price
+    uint _price,
+    bool onBazzar,
+    string _imageHash
     ) public
-
     returns(address){
-
         Product _product=new Product();
-        _product.construct(_name,_owner,_minPrice,_price);
+        _product.construct(_name,_owner,_minPrice,_price,onBazzar,_imageHash);
         productsState[_product]= true;
         ownertoProducts[_owner].push(_product);
         productsIndex[address(_product)]=ownertoProducts[_owner].length-1;
         productSize++;
-        LogProductAdded(_owner,_product,_name);
+        emit LogProductAdded(_owner,_product,_name,_imageHash,onBazzar);
         return address(_product);
-
     }
 
     function getSize() public view returns(uint){

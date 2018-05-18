@@ -1,10 +1,8 @@
-var BuyerContract  = artifacts.require("./Buyer.sol");
-var ProductContract  = artifacts.require("./Product.sol");
-var SellerContract = artifacts.require("./Seller.sol");
-var ProductRegistryContract=artifacts.require("./ProductRegistry.sol");
+var productFactory = artifacts.require("./ProductFactory.sol");
+var productRegistryContract=artifacts.require("./ProductRegistry.sol");
 
-
-var products=[["iphone",8,10],
+var hash='QmNvSDNj7Rv56m6Xo7aLkTAstCx3awXEmspSiH4rN6AiLk'
+var products=[["iphone",8,10],  //8 ether
     ["nokia",5,7],
     ["mackbook",15,20],
     ["swatch",3,5],
@@ -27,8 +25,8 @@ const isRevertError = (error) => {
     return invalidOpcode || outOfGas || revert;
 }
 
-console.log("Address of product registry :",ProductRegistryContract.address);
-console.log("Address of selller          :",SellerContract.address);
+console.log("Address of product Registry :",productRegistryContract.address);
+console.log("Address of product Factory  :",productFactory.address);
 
 contract("Product Bazaar",function(accounts){
     let _contract;
@@ -40,8 +38,8 @@ contract("Product Bazaar",function(accounts){
 
         products.forEach(function(item,index) {
             it('Publish product: '+item[0],async () => {
-                _contract = await SellerContract.deployed();
-                const result=await  _contract.publishProduct(item[0],item[1],item[2],{value:web3.toWei(0.1,'ether'),from:accounts[0]});
+                _contract = await productFactory.deployed();
+                const result=await  _contract.publishProduct(item[0],item[1]*(10**3),item[2]*(10**3),true,hash,{value:web3.toWei(0.1,'ether'),from:accounts[0]});
                 assert(result.logs[0].event=='LogProductPublished', "Failed")
                 productAddress.push(result.logs[0].args.product)
             });
@@ -60,4 +58,5 @@ contract("Product Bazaar",function(accounts){
         });
 
     });
+
 });

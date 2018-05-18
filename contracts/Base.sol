@@ -14,8 +14,7 @@ contract Base{
             revert();
         }
     }
-
-    function Base  () public{
+    constructor () public {
         owner = msg.sender ;
     }
 

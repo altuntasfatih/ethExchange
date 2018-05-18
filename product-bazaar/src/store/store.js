@@ -13,7 +13,8 @@ export default new Vuex.Store({
       balance: null,
       error: null
     },
-    contractInstances: null
+    contractInstances: null,
+    ipfsapi: null
   },
   strict: true, // don't leave it true on production
   mutations: {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     CONTRACTSPUSH (state, result) {
       state.contractInstances = result
+    },
+    IPFS (state, result) {
+      state.ipfsapi = result
     }
   },
   actions: {
@@ -35,6 +39,9 @@ export default new Vuex.Store({
     },
     contractPush ({ commit }, result) {
       commit('CONTRACTSPUSH', result)
+    },
+    ipfsSet ({ commit }, result) {
+      commit('IPFS', result)
     }
   },
   getters: {
@@ -43,6 +50,12 @@ export default new Vuex.Store({
     },
     getContracts: state => {
       return state.contractInstances
+    },
+    coinBase: state => {
+      return state.web3.coinbase
+    },
+    getIpfs: state => {
+      return state.ipfsapi
     }
   }
 })

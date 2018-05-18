@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar sticky-top navbar-light bg-light">
-      <a class="navbar-brand" href="#">Product-Bazzar</a>
+      <a class="navbar-brand" href="/">Product-Bazzar</a>
       <b>Balance:{{web3state.balance }} ETH</b>
       <b>Address:{{web3state.coinbase}}</b>
       <b>Network:{{web3state.networkId}}</b>
